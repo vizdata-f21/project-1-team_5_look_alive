@@ -14,9 +14,18 @@ A brief description of your dataset including its provenance, dimensions, etc. a
 
 Make sure to load the data and use inline code for some of this information.
 
+We chose the global deforestation data from https://github.com/rfordatascience/tidytuesday/blob/master/data/2021/2021-04-06/readme.md,
+which was  sourced from Our World in Data. 
+
+The dataset has 5 elements: `forest`, `forest_change`, `brazil_loss`, `soybean_use`, and `vegetable_oil`. The set `forest` contains the change every 5 years in for forest area in conversion. It comes originally from the UN Food and Agriculture Organization’s Forest Resources Assessment. "Since year-to-year changes in forest cover can be volatile, the UN FAO provide this annual data averaged over five-year periods." `forest_area` contains the change in global forest area as a percent of global forest area. `brazil_loss` contains the loss of Brazilian forest due to specific types of deforestation, such as `fire` and `small_scale_clearing`. `soybean_use` contains the soybean production and use by year and by country. Finally, the set `vegetable_oil` contains vegetable oil production by crop type and year.
+
+We chose this dataset because we were interested to see the effects of soybean production on deforestation in Brazil and globally. The data also had minimal missing values, and multiple datasets, so we were able to brainstorm several ideas we'd be interested in. 
+
 ## Questions
 
-The two questions you want to answer.
+Question one: What is the relationship between global soybean use and deforestation in Brazil? (specifically, deforestation in Brazil due to commercial crops? specifically, USA? specifically, which type of use?)
+
+Question two: 
 
 ## Analysis plan
 
