@@ -23,8 +23,16 @@ by Team name
     ##  Downloading file 1 of 5: `forest.csv`
     ##  Downloading file 2 of 5: `forest_area.csv`
     ##  Downloading file 3 of 5: `brazil_loss.csv`
+
+    ## Only 10 Github queries remaining until 2021-09-13 01:13:50 PM EDT.
+
     ##  Downloading file 4 of 5: `soybean_use.csv`
+
+    ## Only 9 Github queries remaining until 2021-09-13 01:13:51 PM EDT.
+
     ##  Downloading file 5 of 5: `vegetable_oil.csv`
+
+    ## Only 8 Github queries remaining until 2021-09-13 01:13:51 PM EDT.
 
     ## --- Download complete ---
 

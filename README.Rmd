@@ -9,17 +9,17 @@ library(tidyverse)
 ```
 
 
-```{r load-data, echo = FALSE}
+```{r load-data, echo = FALSE, message = F}
 tuesdata <- tidytuesdayR::tt_load('2021-04-06')
 
 forest <- tuesdata$forest
-forest_change <- tuesdata$forest_change
+forest_area <- tuesdata$forest_area
 brazil_loss <- tuesdata$brazil_loss
 soybean_use <- tuesdata$soybean_use
 vegetable_oil <- tuesdata$vegetable_oil
 
 write.csv(forest, "./data/forest.csv")
-write.csv(forest_change, "./data/forest_change.csv")
+write.csv(forest_area, "./data/forest_area.csv")
 write.csv(brazil_loss, "./data/brazil_loss.csv")
 write.csv(soybean_use, "./data/soybean_use.csv")
 write.csv(vegetable_oil, "./data/vegetable_oil.csv")
