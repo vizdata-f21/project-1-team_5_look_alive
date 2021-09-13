@@ -9,7 +9,19 @@ output: github_document
 ```
 
 ```{r load-data, echo = FALSE}
-# load data here
+tuesdata <- tidytuesdayR::tt_load('2021-04-06')
+
+forest <- tuesdata$forest
+forest_change <- tuesdata$forest_change
+brazil_loss <- tuesdata$brazil_loss
+soybean_use <- tuesdata$soybean_use
+vegetable_oil <- tuesdata$vegetable_oil
+
+write.csv(forest, "./data/forest.csv")
+write.csv(forest_change, "./data/forest_change.csv")
+write.csv(brazil_loss, "./data/brazil_loss.csv")
+write.csv(soybean_use, "./data/soybean_use.csv")
+write.csv(vegetable_oil, "./data/vegetable_oil.csv")
 ```
 
 ## Introduction

@@ -2,6 +2,21 @@ Project title
 ================
 by Team name
 
+    ## --- Compiling #TidyTuesday Information for 2021-04-06 ----
+
+    ## --- There are 5 files available ---
+
+    ## --- Starting Download ---
+
+    ## 
+    ##  Downloading file 1 of 5: `forest.csv`
+    ##  Downloading file 2 of 5: `forest_area.csv`
+    ##  Downloading file 3 of 5: `brazil_loss.csv`
+    ##  Downloading file 4 of 5: `soybean_use.csv`
+    ##  Downloading file 5 of 5: `vegetable_oil.csv`
+
+    ## --- Download complete ---
+
 ## Introduction
 
 (1-2 paragraphs) Brief introduction to the dataset. You may repeat some
@@ -10,7 +25,7 @@ dataset on the TidyTuesday repository, paraphrasing on your own terms.
 Imagine that your project is a standalone document and the grader has no
 prior knowledge of the dataset.
 
-## Question 1 &lt;- Update title to relate to the question you’re answering
+## Question 1 \<- Update title to relate to the question you’re answering
 
 ### Introduction
 
@@ -42,7 +57,7 @@ R or lattice plotting functions.
 your analysis. Identify any trends revealed (or not revealed) by the
 plots. Speculate about why the data looks the way it does.
 
-## Question 2 &lt;- Update title to relate to the question you’re answering
+## Question 2 \<- Update title to relate to the question you’re answering
 
 ### Introduction
 

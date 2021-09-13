@@ -1,0 +1,476 @@
+"","entity","code","year","net_forest_conversion"
+"1","Algeria","DZA",1990,-8800
+"2","Algeria","DZA",2000,33900
+"3","Algeria","DZA",2010,7600
+"4","Algeria","DZA",2015,-1400
+"5","Argentina","ARG",1990,-182600
+"6","Argentina","ARG",2000,-316400
+"7","Argentina","ARG",2010,-223400
+"8","Argentina","ARG",2015,-104800
+"9","Aruba","ABW",1990,0
+"10","Aruba","ABW",2000,0
+"11","Aruba","ABW",2010,0
+"12","Aruba","ABW",2015,0
+"13","Australia","AUS",1990,-206810
+"14","Australia","AUS",2000,-226800
+"15","Australia","AUS",2010,709680
+"16","Austria","AUT",1990,6250
+"17","Austria","AUT",2000,2510
+"18","Austria","AUT",2010,3600
+"19","Austria","AUT",2015,3590
+"20","Azerbaijan","AZE",2010,9080
+"21","Azerbaijan","AZE",2015,14160
+"22","Bahrain","BHR",1990,10
+"23","Bahrain","BHR",2000,10
+"24","Bahrain","BHR",2010,20
+"25","Bahrain","BHR",2015,20
+"26","Bangladesh","BGD",1990,0
+"27","Bangladesh","BGD",2000,-3200
+"28","Bangladesh","BGD",2010,-990.000000000002
+"29","Bangladesh","BGD",2015,0
+"30","Belarus","BLR",2000,26110
+"31","Belarus","BLR",2010,19900
+"32","Belarus","BLR",2015,26820
+"33","Belgium","BEL",2010,-110
+"34","Belgium","BEL",2015,0
+"35","Belize","BLZ",1990,-14070
+"36","Belize","BLZ",2000,-6790
+"37","Belize","BLZ",2010,-11710
+"38","Belize","BLZ",2015,-11160
+"39","Bhutan","BTN",1990,9930
+"40","Bhutan","BTN",2000,9930
+"41","Bhutan","BTN",2010,1980
+"42","Bhutan","BTN",2015,1980
+"43","Bolivia","BOL",1990,-270330
+"44","Bolivia","BOL",2000,-201540
+"45","Bolivia","BOL",2010,-211760
+"46","Bolivia","BOL",2015,-238690
+"47","Brazil","BRA",1990,-3780940
+"48","Brazil","BRA",2000,-3950790
+"49","Brazil","BRA",2010,-1539180
+"50","Brazil","BRA",2015,-1453040
+"51","Bulgaria","BGR",1990,4800
+"52","Bulgaria","BGR",2000,36200
+"53","Bulgaria","BGR",2010,19200
+"54","Bulgaria","BGR",2015,12000
+"55","Burundi","BDI",1990,-8250
+"56","Burundi","BDI",2000,0
+"57","Burundi","BDI",2010,17140
+"58","Burundi","BDI",2015,0
+"59","Cameroon","CMR",1990,-90250
+"60","Cameroon","CMR",2000,-69700
+"61","Cameroon","CMR",2010,-56000
+"62","Cameroon","CMR",2015,-56000
+"63","Canada","CAN",1990,-47100
+"64","Canada","CAN",2000,-47980
+"65","Canada","CAN",2010,-41300
+"66","Canada","CAN",2015,-37520
+"67","Cape Verde","CPV",2000,300
+"68","Cape Verde","CPV",2010,300
+"69","Cape Verde","CPV",2015,300
+"70","Cayman Islands","CYM",1990,-20
+"71","Cayman Islands","CYM",2000,-20
+"72","Cayman Islands","CYM",2010,0
+"73","Cayman Islands","CYM",2015,0
+"74","Central African Republic","CAF",1990,-30000
+"75","Central African Republic","CAF",2000,-30000
+"76","Central African Republic","CAF",2010,-30000
+"77","Central African Republic","CAF",2015,-30000
+"78","Chile","CHL",1990,57100
+"79","Chile","CHL",2000,90820
+"80","Chile","CHL",2010,174160
+"81","Chile","CHL",2015,122920
+"82","China","CHN",1990,1986000
+"83","China","CHN",2000,2360980
+"84","China","CHN",2010,1936770
+"85","China","CHN",2015,1936790
+"86","Colombia","COL",1990,-222260
+"87","Colombia","COL",2000,-192770
+"88","Colombia","COL",2010,-134630
+"89","Colombia","COL",2015,-198550
+"90","Congo","COG",1990,-12000
+"91","Congo","COG",2000,-12000
+"92","Congo","COG",2010,-12000
+"93","Congo","COG",2015,-13800
+"94","Costa Rica","CRI",1990,-5020
+"95","Costa Rica","CRI",2000,1400
+"96","Costa Rica","CRI",2010,16370
+"97","Costa Rica","CRI",2015,16370
+"98","Croatia","HRV",2000,3500
+"99","Croatia","HRV",2010,400
+"100","Croatia","HRV",2015,3420
+"101","Cuba","CUB",1990,37700
+"102","Cuba","CUB",2000,49700
+"103","Cuba","CUB",2010,50400
+"104","Cuba","CUB",2015,11600
+"105","Denmark","DNK",1990,4020
+"106","Denmark","DNK",2000,1490
+"107","Denmark","DNK",2010,7640
+"108","Denmark","DNK",2015,750
+"109","Djibouti","DJI",1990,0
+"110","Djibouti","DJI",2000,0
+"111","Djibouti","DJI",2010,0
+"112","Djibouti","DJI",2015,40
+"113","Dominican Republic","DOM",1990,37760
+"114","Dominican Republic","DOM",2000,10070
+"115","Dominican Republic","DOM",2010,6110
+"116","Ecuador","ECU",1990,-90170
+"117","Ecuador","ECU",2000,-70230
+"118","Ecuador","ECU",2010,-41800
+"119","Ecuador","ECU",2015,-64270
+"120","El Salvador","SLV",1990,-4500
+"121","El Salvador","SLV",2000,-4500
+"122","El Salvador","SLV",2010,-4500
+"123","El Salvador","SLV",2015,-4500
+"124","Equatorial Guinea","GNQ",2000,-8360
+"125","Equatorial Guinea","GNQ",2010,-8360
+"126","Equatorial Guinea","GNQ",2015,-8360
+"127","Estonia","EST",2000,9710
+"128","Estonia","EST",2010,17000
+"129","Estonia","EST",2015,3480
+"130","Ethiopia","ETH",2000,-73000
+"131","Ethiopia","ETH",2010,-73000
+"132","Ethiopia","ETH",2015,-73000
+"133","Falkland Islands","FLK",1990,0
+"134","Falkland Islands","FLK",2000,0
+"135","Falkland Islands","FLK",2010,0
+"136","Falkland Islands","FLK",2015,0
+"137","Faroe Islands",NA,1990,0
+"138","Faroe Islands",NA,2000,0
+"139","Faroe Islands",NA,2010,0
+"140","Faroe Islands",NA,2015,0
+"141","Finland","FIN",1990,57030
+"142","Finland","FIN",2000,-20360
+"143","Finland","FIN",2010,33400
+"144","French Guyana",NA,1990,-4560
+"145","French Guyana",NA,2000,-4290
+"146","French Guyana",NA,2010,-3300
+"147","French Guyana",NA,2015,-3430
+"148","Gabon","GAB",1990,-6110
+"149","Gabon","GAB",2000,-5060
+"150","Gabon","GAB",2010,-11880
+"151","Gabon","GAB",2015,-11880
+"152","Georgia","GEO",2000,6180
+"153","Georgia","GEO",2010,0
+"154","Georgia","GEO",2015,0
+"155","Germany","DEU",1990,5400
+"156","Germany","DEU",2000,5500
+"157","Germany","DEU",2010,2000
+"158","Germany","DEU",2015,0
+"159","Gibraltar","GIB",1990,0
+"160","Gibraltar","GIB",2000,0
+"161","Gibraltar","GIB",2010,0
+"162","Gibraltar","GIB",2015,0
+"163","Greenland","GRL",1990,0
+"164","Greenland","GRL",2000,0
+"165","Greenland","GRL",2010,0
+"166","Greenland","GRL",2015,0
+"167","Guadeloupe","GLP",1990,-90
+"168","Guadeloupe","GLP",2000,-70
+"169","Guadeloupe","GLP",2010,130
+"170","Guadeloupe","GLP",2015,-60
+"171","Guatemala","GTM",1990,-57200
+"172","Guatemala","GTM",2000,-48660
+"173","Guatemala","GTM",2010,-27360
+"174","Guatemala","GTM",2015,-11600
+"175","Guinea","GIN",1990,-34700
+"176","Guyana","GUY",1990,-3790
+"177","Guyana","GUY",2000,-4440
+"178","Guyana","GUY",2010,-11690
+"179","Guyana","GUY",2015,-9200
+"180","Honduras","HND",1990,-20950
+"181","Honduras","HND",2000,-20280
+"182","Honduras","HND",2010,-22330
+"183","Honduras","HND",2015,-20910
+"184","Hungary","HUN",1990,10730
+"185","Hungary","HUN",2000,12520
+"186","Hungary","HUN",2010,2890
+"187","Hungary","HUN",2015,-1560
+"188","Iceland","ISL",1990,1280
+"189","Iceland","ISL",2000,1480
+"190","Iceland","ISL",2010,700
+"191","Iceland","ISL",2015,640
+"192","India","IND",1990,365300
+"193","India","IND",2000,190500
+"194","India","IND",2010,266400
+"195","India","IND",2015,266400
+"196","Indonesia","IDN",1990,-1726500
+"197","Indonesia","IDN",2000,-162080
+"198","Indonesia","IDN",2015,-578940
+"199","Iraq","IRQ",1990,1400
+"200","Iraq","IRQ",2000,700
+"201","Iraq","IRQ",2010,0
+"202","Iraq","IRQ",2015,0
+"203","Ireland","IRL",1990,16870
+"204","Ireland","IRL",2000,9000
+"205","Ireland","IRL",2010,6860
+"206","Ireland","IRL",2015,5470
+"207","Isle of Man","IMN",1990,0
+"208","Isle of Man","IMN",2000,0
+"209","Isle of Man","IMN",2010,0
+"210","Isle of Man","IMN",2015,0
+"211","Italy","ITA",2010,53810
+"212","Jamaica","JAM",1990,-30
+"213","Jamaica","JAM",2000,3740
+"214","Jamaica","JAM",2010,3800
+"215","Jamaica","JAM",2015,3890
+"216","Kuwait","KWT",1990,140
+"217","Kuwait","KWT",2000,140
+"218","Kuwait","KWT",2010,0
+"219","Kuwait","KWT",2015,0
+"220","Kyrgyzstan","KGZ",2000,4880
+"221","Kyrgyzstan","KGZ",2010,4430
+"222","Kyrgyzstan","KGZ",2015,12710
+"223","Latvia","LVA",2000,13110
+"224","Latvia","LVA",2010,3860
+"225","Latvia","LVA",2015,3870
+"226","Liberia","LBR",1990,-30260
+"227","Liberia","LBR",2000,-30260
+"228","Liberia","LBR",2010,-30260
+"229","Liberia","LBR",2015,-30260
+"230","Liechtenstein","LIE",1990,0
+"231","Liechtenstein","LIE",2000,0
+"232","Liechtenstein","LIE",2010,0
+"233","Liechtenstein","LIE",2015,0
+"234","Lithuania","LTU",2000,15000
+"235","Lithuania","LTU",2010,3400
+"236","Lithuania","LTU",2015,2800
+"237","Madagascar","MDG",1990,-66900
+"238","Malawi","MWI",1990,-42000
+"239","Malawi","MWI",2000,-42000
+"240","Malawi","MWI",2010,-42000
+"241","Malawi","MWI",2015,-42000
+"242","Maldives","MDV",1990,0
+"243","Maldives","MDV",2000,0
+"244","Maldives","MDV",2010,0
+"245","Maldives","MDV",2015,0
+"246","Mali","MLI",1990,-79000
+"247","Mali","MLI",2000,-79000
+"248","Mali","MLI",2010,-79000
+"249","Mali","MLI",2015,0
+"250","Martinique","MTQ",1990,90
+"251","Martinique","MTQ",2000,150
+"252","Martinique","MTQ",2010,200
+"253","Martinique","MTQ",2015,200
+"254","Mauritania","MRT",1990,-5440
+"255","Mauritania","MRT",2000,-5440
+"256","Mauritania","MRT",2010,-5440
+"257","Mauritania","MRT",2015,-5450
+"258","Mauritius","MUS",1990,90
+"259","Mauritius","MUS",2000,-350
+"260","Mauritius","MUS",2010,-20
+"261","Mauritius","MUS",2015,90
+"262","Mayotte","MYT",1990,-340
+"263","Mayotte","MYT",2000,-130
+"264","Mayotte","MYT",2010,-50
+"265","Mayotte","MYT",2015,-50
+"266","Mexico","MEX",1990,-221030
+"267","Mexico","MEX",2000,-143800
+"268","Mexico","MEX",2010,-122480
+"269","Mexico","MEX",2015,-127770
+"270","Moldova","MDA",2000,3010
+"271","Moldova","MDA",2010,2380
+"272","Moldova","MDA",2015,20
+"273","Monaco","MCO",1990,0
+"274","Monaco","MCO",2000,0
+"275","Monaco","MCO",2010,0
+"276","Monaco","MCO",2015,0
+"277","Mongolia","MNG",1990,-8810
+"278","Mongolia","MNG",2000,-8000
+"279","Mongolia","MNG",2010,-1110
+"280","Mongolia","MNG",2015,-1110
+"281","Montenegro","MNE",2010,0
+"282","Montenegro","MNE",2015,0
+"283","Morocco","MAR",1990,2120
+"284","Morocco","MAR",2000,16800
+"285","Morocco","MAR",2010,2020
+"286","Morocco","MAR",2015,11560
+"287","Mozambique","MOZ",1990,-219000
+"288","Mozambique","MOZ",2000,-221590
+"289","Mozambique","MOZ",2010,-206430
+"290","Mozambique","MOZ",2015,-239250
+"291","Myanmar","MMR",1990,-435000
+"292","Myanmar","MMR",2000,-342700
+"293","Myanmar","MMR",2010,-289710
+"294","Myanmar","MMR",2015,-289710
+"295","Nauru","NRU",1990,0
+"296","Nauru","NRU",2000,0
+"297","Nauru","NRU",2010,0
+"298","Nauru","NRU",2015,0
+"299","Nepal","NPL",1990,10880
+"300","Nepal","NPL",2000,18130
+"301","Nepal","NPL",2010,0
+"302","Nepal","NPL",2015,0
+"303","Netherlands","NLD",1990,1420
+"304","Netherlands","NLD",2000,1400
+"305","Netherlands","NLD",2010,-1730
+"306","Netherlands","NLD",2015,930
+"307","New Zealand","NZL",1990,47820
+"308","New Zealand","NZL",2000,-230
+"309","New Zealand","NZL",2010,-299.999999999999
+"310","New Zealand","NZL",2015,9200
+"311","Nicaragua","NIC",1990,-1e+05
+"312","Nicaragua","NIC",2000,-121120
+"313","Nicaragua","NIC",2010,-56120
+"314","Nicaragua","NIC",2015,-1e+05
+"315","Niger","NER",1990,-61690
+"316","Niger","NER",2000,-12420
+"317","Niger","NER",2010,-12420
+"318","Niger","NER",2015,-12420
+"319","Nigeria","NGA",1990,-163300
+"320","Nigeria","NGA",2000,-163310
+"321","Nigeria","NGA",2010,-163310
+"322","Nigeria","NGA",2015,-163300
+"323","North Korea","PRK",1990,-45730
+"324","North Korea","PRK",2000,-21230
+"325","North Korea","PRK",2010,-21230
+"326","North Korea","PRK",2015,-21230
+"327","Norway","NOR",1990,-1900
+"328","Norway","NOR",2000,-1100
+"329","Norway","NOR",2010,7800
+"330","Norway","NOR",2015,7800
+"331","Panama","PAN",1990,-16530
+"332","Panama","PAN",2000,-11420
+"333","Panama","PAN",2010,-11420
+"334","Panama","PAN",2015,-11410
+"335","Papua New Guinea","PNG",1990,-12170
+"336","Papua New Guinea","PNG",2000,-9910
+"337","Papua New Guinea","PNG",2010,-30900
+"338","Papua New Guinea","PNG",2015,-33530
+"339","Paraguay","PRY",1990,-255420
+"340","Paraguay","PRY",2000,-342140
+"341","Paraguay","PRY",2010,-414250
+"342","Paraguay","PRY",2015,-279340
+"343","Peru","PER",1990,-115070
+"344","Peru","PER",2000,-124800
+"345","Peru","PER",2010,-171050
+"346","Peru","PER",2015,-172830
+"347","Poland","POL",1990,17700
+"348","Poland","POL",2000,27000
+"349","Poland","POL",2010,18200
+"350","Poland","POL",2015,12600
+"351","Portugal","PRT",2010,12000
+"352","Qatar","QAT",1990,0
+"353","Qatar","QAT",2000,0
+"354","Qatar","QAT",2010,0
+"355","Qatar","QAT",2015,0
+"356","Romania","ROU",2000,14900
+"357","Romania","ROU",2010,69200
+"358","Romania","ROU",2015,13610
+"359","Russia","RUS",2000,586710
+"360","Russia","RUS",2010,-41030
+"361","Russia","RUS",2015,76230
+"362","San Marino","SMR",1990,0
+"363","San Marino","SMR",2000,0
+"364","San Marino","SMR",2010,0
+"365","San Marino","SMR",2015,0
+"366","Sao Tome and Principe","STP",1990,-30
+"367","Sao Tome and Principe","STP",2000,-30
+"368","Sao Tome and Principe","STP",2010,-620
+"369","Sao Tome and Principe","STP",2015,-620
+"370","Senegal","SEN",2010,-40000
+"371","Senegal","SEN",2015,-40000
+"372","Serbia","SRB",2010,1310
+"373","Serbia","SRB",2015,620
+"374","Singapore","SGP",1990,220
+"375","Singapore","SGP",2000,70
+"376","Singapore","SGP",2010,-250
+"377","Singapore","SGP",2015,-180
+"378","Slovenia","SVN",2000,1400
+"379","Slovenia","SVN",2010,200
+"380","Slovenia","SVN",2015,-2030
+"381","Somalia","SOM",1990,-76750
+"382","Somalia","SOM",2000,-76750
+"383","Somalia","SOM",2010,-76750
+"384","Somalia","SOM",2015,-76750
+"385","South Africa","ZAF",1990,-36400
+"386","South Africa","ZAF",2000,-36400
+"387","South Africa","ZAF",2010,-36400
+"388","South Africa","ZAF",2015,-36400
+"389","South Korea","KOR",1990,-7500
+"390","South Korea","KOR",2000,-8900
+"391","South Korea","KOR",2010,-10000
+"392","South Korea","KOR",2015,-10000
+"393","Spain","ESP",2000,145140
+"394","Spain","ESP",2010,1170
+"395","Spain","ESP",2015,4200
+"396","Sudan","SDN",2015,-170080
+"397","Suriname","SUR",1990,-3680
+"398","Suriname","SUR",2000,-4100
+"399","Suriname","SUR",2010,-9640
+"400","Suriname","SUR",2015,-11080
+"401","Sweden","SWE",1990,10000
+"402","Sweden","SWE",2000,-9000
+"403","Sweden","SWE",2010,-18600
+"404","Sweden","SWE",2015,0
+"405","Switzerland","CHE",1990,4270
+"406","Switzerland","CHE",2000,3850
+"407","Switzerland","CHE",2010,3440
+"408","Switzerland","CHE",2015,3440
+"409","Syria","SYR",1990,6000
+"410","Syria","SYR",2000,4870
+"411","Syria","SYR",2010,3550
+"412","Tanzania","TZA",1990,-372000
+"413","Tanzania","TZA",2000,-372000
+"414","Tanzania","TZA",2010,-372000
+"415","Tanzania","TZA",2015,-469000
+"416","Thailand","THA",1990,-36300
+"417","Thailand","THA",2000,107500
+"418","Thailand","THA",2010,-2400.00000000001
+"419","Thailand","THA",2015,-37600
+"420","Togo","TGO",1990,-9320
+"421","Togo","TGO",2000,-2960
+"422","Togo","TGO",2010,-2960
+"423","Togo","TGO",2015,-2960
+"424","Tokelau","TKL",1990,0
+"425","Tokelau","TKL",2000,0
+"426","Tokelau","TKL",2010,0
+"427","Tokelau","TKL",2015,0
+"428","Tunisia","TUN",1990,2390
+"429","Tunisia","TUN",2000,1960
+"430","Tunisia","TUN",2010,1530
+"431","Tunisia","TUN",2015,1530
+"432","Turkey","TUR",1990,36490
+"433","Turkey","TUR",2000,93470
+"434","Turkey","TUR",2010,109440
+"435","Turkey","TUR",2015,118010
+"436","Uganda","UGA",1990,-41250
+"437","Uganda","UGA",2000,-41250
+"438","Uganda","UGA",2010,-41250
+"439","Uganda","UGA",2015,-41250
+"440","Ukraine","UKR",2000,3800
+"441","Ukraine","UKR",2010,21800
+"442","Ukraine","UKR",2015,6600
+"443","United Kingdom","GBR",2000,10500
+"444","United Kingdom","GBR",2010,19200
+"445","United States","USA",1990,108600
+"446","United States","USA",2000,518400
+"447","United States","USA",2010,275000
+"448","Uruguay","URY",2000,36230
+"449","Uruguay","URY",2010,37740
+"450","Uzbekistan","UZB",2000,38810
+"451","Uzbekistan","UZB",2010,39960
+"452","Uzbekistan","UZB",2015,28050
+"453","Vatican","VAT",1990,0
+"454","Vatican","VAT",2000,0
+"455","Vatican","VAT",2010,0
+"456","Vatican","VAT",2015,0
+"457","Venezuela","VEN",1990,-287500
+"458","Venezuela","VEN",2000,-164600
+"459","Venezuela","VEN",2010,-164400
+"460","Venezuela","VEN",2015,-90420
+"461","Vietnam","VNM",1990,240810
+"462","Vietnam","VNM",2000,160400
+"463","Vietnam","VNM",2010,134760
+"464","Vietnam","VNM",2015,116250
+"465","World","OWID_WRL",1990,-7818000
+"466","World","OWID_WRL",2000,-5117000
+"467","World","OWID_WRL",2010,-4801000
+"468","World","OWID_WRL",2015,-5150000
+"469","Zambia","ZMB",2000,-35800
+"470","Zambia","ZMB",2010,-188180
+"471","Zambia","ZMB",2015,-188210
+"472","Zimbabwe","ZWE",1990,-46070
+"473","Zimbabwe","ZWE",2000,-46070
+"474","Zimbabwe","ZWE",2010,-46070
+"475","Zimbabwe","ZWE",2015,-46070
