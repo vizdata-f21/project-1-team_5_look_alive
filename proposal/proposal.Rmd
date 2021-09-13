@@ -10,6 +10,14 @@ library(tidyverse)
 
 ## Dataset
 
+```{r load_data}
+forest <- read.csv("../data/forest.csv")
+forest_area <- read.csv("../data/forest_area.csv")
+brazil_loss <- read.csv("../data/brazil_loss.csv")
+vegetable_oil <- read.csv("../data/vegetable_oil.csv")
+soybean_use <- read.csv("../data/soybean_use.csv")
+```
+
 A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.
 
 Make sure to load the data and use inline code for some of this information.
