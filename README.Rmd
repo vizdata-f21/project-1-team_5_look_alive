@@ -5,8 +5,9 @@ output: github_document
 ---
 
 ```{r load-packages, echo = FALSE}
-# load packages here
+library(tidyverse)
 ```
+
 
 ```{r load-data, echo = FALSE}
 tuesdata <- tidytuesdayR::tt_load('2021-04-06')
