@@ -1,6 +1,6 @@
 Project proposal
 ================
-Team name
+Team 5 Look Live
 
 ``` r
 library(tidyverse)
@@ -10,6 +10,14 @@ library(tidyverse)
     ## had status 1
 
 ## Dataset
+
+``` r
+forest <- read.csv("../data/forest.csv")
+forest_area <- read.csv("../data/forest_area.csv")
+brazil_loss <- read.csv("../data/brazil_loss.csv")
+vegetable_oil <- read.csv("../data/vegetable_oil.csv")
+soybean_use <- read.csv("../data/soybean_use.csv")
+```
 
 A brief description of your dataset including its provenance,
 dimensions, etc. as well as the reason why you chose this dataset.
@@ -45,10 +53,23 @@ Question one: What is the relationship between global soybean use and
 deforestation in Brazil? (specifically, deforestation in Brazil due to
 commercial crops? specifically, USA? specifically, which type of use?)
 
-Question two:
+Question two: How does the proportions of soybean production used for
+human food versus for feeding animal change over time? and whether this
+change in proportions is related to global deforestation development
+over time?
 
 ## Analysis plan
 
-A plan for answering each of the questions including the variables
-involved, variables to be created (if any), external data to be merged
-in (if any).
+Plan for Question Two: 1. group all entries in soybean\_use.csv by
+decades; 2. For each decade category, add up the values for all entries
+under “human\_food”, “animal\_feed”, and “processed”; 3. create new
+variables “human\_prop” and “animal\_prop” that represents the
+proportions of soybean production used for human food and for animal
+feed out of the totality each decade; 4.plot “human\_prop” and
+“animal\_prop” as dots in a graph where the x-axis represents “decade”
+and the y-axis represents proportion percentage between 0 to 1. Connect
+all dots under each variable - “human\_prop” and “animal\_prop” - with
+lines in differentiating shape and color. 5. plot percent of global
+forest area, “forest\_area”, as points in the above graph and connect
+the dots with a different colored line. 6. Observe and compare the
+lines.

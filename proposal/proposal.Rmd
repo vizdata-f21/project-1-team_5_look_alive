@@ -33,8 +33,20 @@ We chose this dataset because we were interested to see the effects of soybean p
 
 Question one: What is the relationship between global soybean use and deforestation in Brazil? (specifically, deforestation in Brazil due to commercial crops? specifically, USA? specifically, which type of use?)
 
-Question two: How does the proportion of soybean production used for human food to it being used for feeding animal change over time? and whether this change in proportion is related to global deforestation development over time?
+Question two: How does the proportions of soybean production used for human food versus for feeding animal change over time? and whether this change in proportions is related to global deforestation development over time?
 
 ## Analysis plan
 
-A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
+
+
+Plan for Question Two: 
+1. group all entries in soybean_use.csv by decades; 
+2. For each decade category, add up the values for all entries under "human_food", "animal_feed", and "processed";
+3. create new variables "human_prop" and "animal_prop" that represents the proportions of soybean production used for human food and for animal feed out of the totality each decade;
+4.plot "human_prop" and "animal_prop" as dots in a graph where the x-axis represents "decade" and the y-axis represents proportion percentage between 0 to 1. Connect all dots under each variable - "human_prop" and "animal_prop" - with lines in differentiating shape and color.
+5. plot percent of global forest area, "forest_area", as points in the above graph and connect the dots with a different colored line.
+6. Observe and compare the lines.
+
+
+
+
