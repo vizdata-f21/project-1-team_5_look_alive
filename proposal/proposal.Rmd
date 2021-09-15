@@ -1,6 +1,6 @@
 ---
 title: "Project proposal"
-author: "Team name"
+author: "Team 5 Look Live"
 output: github_document
 ---
 
@@ -33,7 +33,7 @@ We chose this dataset because we were interested to see the effects of soybean p
 
 Question one: What is the relationship between global soybean use and deforestation in Brazil? (specifically, deforestation in Brazil due to commercial crops? specifically, USA? specifically, which type of use?)
 
-Question two: 
+Question two: How does the proportion of soybean production used for human food to it being used for feeding animal change over time? and whether this change in proportion is related to global deforestation development over time?
 
 ## Analysis plan
 
