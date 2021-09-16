@@ -55,9 +55,8 @@ commercial crops? specifically, China, USA? specifically, which type of
 use?)
 
 Question two: How does the proportions of soybean production used for
-human food versus for feeding animal change over time? and whether this
-change in proportions is related to global deforestation development
-over time?
+human food versus for feeding animal change over time? Is this change in
+proportions related to global deforestation development over time?
 
 ## Analysis plan
 
@@ -85,21 +84,30 @@ consider looking specifically at China’s soybean use on the same plot as
 global soybean use, because they are by far the biggest importer of
 soybeans, and/or the United States because it interests us personally.
 We also want to look at the differentiation between types of use, how
-they have developed over time and compared to deforestation.
+they have developed over time and compared to deforestation, which led
+us to our second question.
 
 ### Plan for Question Two:
 
-1.  group all entries in soybean\_use.csv by decades;
-2.  For each decade category, add up the values for all entries under
-    “human\_food”, “animal\_feed”, and “processed”;
-3.  create new variables “human\_prop” and “animal\_prop” that
-    represents the proportions of soybean production used for human food
-    and for animal feed out of the totality each decade; 4.plot
-    “human\_prop” and “animal\_prop” as dots in a graph where the
-    x-axis represents “decade” and the y-axis represents proportion
-    percentage between 0 to 1. Connect all dots under each variable -
-    “human\_prop” and “animal\_prop” - with lines in differentiating
-    shape and color.
-4.  plot percent of global forest area, “forest\_area”, as points in the
-    above graph and connect the dots with a different colored line.
-5.  Observe and compare the lines.
+We want to examine the proportions of soybean production used for human
+food versus for feeding animal change over time and whether this change
+in proportions is related to global deforestation development over time.
+The datasets we will use for this question are `soybean_use` and
+`forest_area`.
+
+Start by grouping all entries in `soybean_use`.csv by decades. For each
+decade category, add up the values for all entries under `human_food`,
+`animal_feed`, and `processed`.
+
+Create new variables `human_prop` and `animal_prop` that represent the
+proportions of soybean production used for human food and for animal
+feed out of the total each decade.
+
+Plot `human_prop` and `animal_prop` as dots in a graph where the x-axis
+represents `decade` and the y-axis represents proportion percentage
+between 0 to 1. Connect all dots under each variable - `human_prop` and
+`animal_prop` - with lines in differentiating shape and color.
+
+Plot percent of global forest area, `forest_area`, as points in the
+above graph and connect the dots with a different colored line. Observe
+and compare the lines.
