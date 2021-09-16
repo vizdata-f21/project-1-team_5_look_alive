@@ -51,7 +51,8 @@ to brainstorm several ideas we’d be interested in.
 
 Question one: What is the relationship between global soybean use and
 deforestation in Brazil? (specifically, deforestation in Brazil due to
-commercial crops? specifically, USA? specifically, which type of use?)
+commercial crops? specifically, China, USA? specifically, which type of
+use?)
 
 Question two: How does the proportions of soybean production used for
 human food versus for feeding animal change over time? and whether this
@@ -60,16 +61,45 @@ over time?
 
 ## Analysis plan
 
-Plan for Question Two: 1. group all entries in soybean\_use.csv by
-decades; 2. For each decade category, add up the values for all entries
-under “human\_food”, “animal\_feed”, and “processed”; 3. create new
-variables “human\_prop” and “animal\_prop” that represents the
-proportions of soybean production used for human food and for animal
-feed out of the totality each decade; 4.plot “human\_prop” and
-“animal\_prop” as dots in a graph where the x-axis represents “decade”
-and the y-axis represents proportion percentage between 0 to 1. Connect
-all dots under each variable - “human\_prop” and “animal\_prop” - with
-lines in differentiating shape and color. 5. plot percent of global
-forest area, “forest\_area”, as points in the above graph and connect
-the dots with a different colored line. 6. Observe and compare the
-lines.
+### Plan for Question One:
+
+We want to plot global soybean use over time as compared to Brazil’s
+deforestation (Brazil is the world’s leader in soybean export). The
+datasets we will combine for this plot are `brazil_loss`, `soybean_use`
+and `forest_area`
+
+Plan for soybean use over time: create new variable `total_use` that
+combines `human_food`, `animal_feed`, and `processed` for each
+observation. Group by `year` to create a dataset with the total global
+use per year. Plot this as a line chart.
+
+Plan for Brazil’s deforestation: Filter Brazil observations from
+`forest_area` dataset. Plot as a line chart.
+
+Based on what we see above, we may want to look at some more specific
+variables to see if they develop into a more interesting story. The
+other things we will consider looking at are looking at Brazil’s
+deforestation *specifically due to commercial crops* (which would be
+`commercial crops` from the `brazil_loss` dataset). We also might
+consider looking specifically at China’s soybean use on the same plot as
+global soybean use, because they are by far the biggest importer of
+soybeans, and/or the United States because it interests us personally.
+We also want to look at the differentiation between types of use, how
+they have developed over time and compared to deforestation.
+
+### Plan for Question Two:
+
+1.  group all entries in soybean\_use.csv by decades;
+2.  For each decade category, add up the values for all entries under
+    “human\_food”, “animal\_feed”, and “processed”;
+3.  create new variables “human\_prop” and “animal\_prop” that
+    represents the proportions of soybean production used for human food
+    and for animal feed out of the totality each decade; 4.plot
+    “human\_prop” and “animal\_prop” as dots in a graph where the
+    x-axis represents “decade” and the y-axis represents proportion
+    percentage between 0 to 1. Connect all dots under each variable -
+    “human\_prop” and “animal\_prop” - with lines in differentiating
+    shape and color.
+4.  plot percent of global forest area, “forest\_area”, as points in the
+    above graph and connect the dots with a different colored line.
+5.  Observe and compare the lines.
