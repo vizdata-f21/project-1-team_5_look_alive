@@ -4,8 +4,7 @@
     <title>Presentation title</title>
     <meta charset="utf-8" />
     <meta name="author" content="Team name   Names of team members" />
-    <meta name="date" content="2021-09-13" />
-    <script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
+    <meta name="date" content="2021-09-27" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -16,7 +15,7 @@ class: center, middle, inverse, title-slide
 ## Presentation subtitle (if any)
 ### Team name <br> Names of team members
 ### Duke University
-### 2021-09-13
+### 2021-09-27
 
 ---
 
@@ -26,6 +25,46 @@ class: center, middle, inverse, title-slide
 
 
 
+
+
+```r
+soybean_use %&gt;%
+  group_by(year) %&gt;%
+  summarise(total_human = sum(human_food, na.rm = T),
+            total_animal = sum(animal_feed, na.rm = T)) %&gt;%
+  ggplot(., aes(x = year)) +
+  geom_line(aes(y = total_human), color = "red") +
+  geom_line(aes(y = total_animal), color = "blue")
+```
+
+&lt;img src="presentation_files/figure-html/unnamed-chunk-1-1.png" width="70%" /&gt;
+
+```r
+soybean_use %&gt;%
+  group_by(year) %&gt;%
+  summarise(total_human = sum(human_food, na.rm = T),
+            total_animal = sum(animal_feed, na.rm = T)) %&gt;%
+  pivot_longer(!year, 
+              names_to = "x1",
+              values_to = "values")
+```
+
+```
+## # A tibble: 106 × 3
+##     year x1             values
+##    &lt;int&gt; &lt;chr&gt;           &lt;dbl&gt;
+##  1  1961 total_human  16994000
+##  2  1961 total_animal  1503000
+##  3  1962 total_human  17326000
+##  4  1962 total_animal  1800000
+##  5  1963 total_human  18667000
+##  6  1963 total_animal  2060000
+##  7  1964 total_human  19639000
+##  8  1964 total_animal  2002000
+##  9  1965 total_human  17796000
+## 10  1965 total_animal  2162000
+## # … with 96 more rows
+```
 
 
 
@@ -113,7 +152,7 @@ glance(model)
 - goes here
 ]
 .pull-right[
-&lt;img src="presentation_files/figure-html/unnamed-chunk-1-1.png" width="100%" /&gt;
+&lt;img src="presentation_files/figure-html/unnamed-chunk-2-1.png" width="100%" /&gt;
 ]
 
 ---

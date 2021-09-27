@@ -37,7 +37,55 @@ knitr::opts_chunk$set(
 ```
 
 ```{r load-data, include=FALSE}
-# Load your data here
+forest <- read.csv("../data/forest.csv")
+forest_area <- read.csv("../data/forest_area.csv")
+brazil_loss <- read.csv("../data/brazil_loss.csv")
+vegetable_oil <- read.csv("../data/vegetable_oil.csv")
+soybean_use <- read.csv("../data/soybean_use.csv")
+
+forest_data <- merge(forest, forest_area, by=c("code", "year"))
+
+soybean_use <- soybean_use %>%
+  rowwise() %>%
+  mutate(total = sum(human_food, animal_feed, processed))
+
+soybean_total <- soybean_use %>%
+  group_by(year) %>%
+  summarise(total_soybean_use_by_year = sum(total, na.rm = T))
+
+brazil_forests <- forest_data %>%
+  filter(code == "BRA")
+
+brazil_loss$total_brazil_forest_loss = rowSums(brazil_loss[,5:15])
+brazil_loss_soybean_use <- merge(brazil_loss, soybean_total, by = c("year")) %>%
+  select(year, total_brazil_forest_loss, total_soybean_use_by_year)
+
+brazil_loss_soybean_use <- brazil_loss_soybean_use %>%
+  pivot_longer(!year, 
+              names_to = "x1",
+              values_to = "values")
+
+ggplot(brazil_loss_soybean_use, aes(x = year, y = values)) +
+  geom_line() +
+  facet_wrap(.~x1, ncol = 1, scales="free_y")
+```
+
+```{r}
+soybean_use %>%
+  group_by(year) %>%
+  summarise(total_human = sum(human_food, na.rm = T),
+            total_animal = sum(animal_feed, na.rm = T)) %>%
+  ggplot(., aes(x = year)) +
+  geom_line(aes(y = total_human), color = "red") +
+  geom_line(aes(y = total_animal), color = "blue")
+
+soybean_use %>%
+  group_by(year) %>%
+  summarise(total_human = sum(human_food, na.rm = T),
+            total_animal = sum(animal_feed, na.rm = T)) %>%
+  pivot_longer(!year, 
+              names_to = "x1",
+              values_to = "values")
 ```
 
 ```{r style-slides, echo = FALSE}
