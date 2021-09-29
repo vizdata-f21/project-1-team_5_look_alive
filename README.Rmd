@@ -58,7 +58,7 @@ All plots must be made with ggplot2. Do not use base R or lattice plotting funct
 In the Discussion section, interpret the results of your analysis. Identify any trends revealed (or not revealed) by the plots.
 Speculate about why the data looks the way it does.
 
-## Question 2 <- Is soy production driving global deforestation?
+## Question 2 <- How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation
 
 ### Introduction
 

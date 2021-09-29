@@ -1,7 +1,7 @@
 ---
-title: "Presentation title"
-subtitle: "Presentation subtitle (if any)"
-author: "Team 5 Look Alive <br> Krystal Hu, Katy Neal, Owen Henry"
+title: "Global Deforestation"
+subtitle: "Is soybean use driving global deforestation?"
+author: "Team 5 Look Alive <br> Krystal Hu, Kate Neal, Owen Henry"
 institute: "Duke University"
 date: "`r Sys.Date()`"
 output:
@@ -36,13 +36,25 @@ knitr::opts_chunk$set(
   )
 ```
 
-```{r load-data, include=FALSE}
+```{r load-data, include = FALSE}
 forest <- read.csv("../data/forest.csv")
 forest_area <- read.csv("../data/forest_area.csv")
 brazil_loss <- read.csv("../data/brazil_loss.csv")
 vegetable_oil <- read.csv("../data/vegetable_oil.csv")
 soybean_use <- read.csv("../data/soybean_use.csv")
 
+```
+
+
+class: inverse, middle, center
+
+# Question One
+## What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil’s commercial soybean crops?
+
+---
+## Code for Q1
+
+```{r question_1_code}
 forest_data <- merge(forest, forest_area, by=c("code", "year"))
 
 soybean_use <- soybean_use %>%
@@ -65,12 +77,25 @@ brazil_loss_soybean_use <- brazil_loss_soybean_use %>%
               names_to = "x1",
               values_to = "values")
 
+```
+
+---
+## Plot for Q1
+
+```{r question_1_plot, echo = FALSE, warning = FALSE, fig.alt = "interpretation."}
 ggplot(brazil_loss_soybean_use, aes(x = year, y = values)) +
   geom_line() +
   facet_wrap(.~x1, ncol = 1, scales="free_y")
 ```
+---
+class: inverse, middle, center
 
-```{r}
+# Question Two
+## How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation development over time?
+---
+## Plot for Q2
+
+```{r question_2_plot,echo = FALSE, warning = FALSE, fig.alt = "interpretation."}
 soybean_use %>%
   group_by(year) %>%
   summarise(total_human = sum(human_food, na.rm = T),
@@ -88,29 +113,15 @@ soybean_use %>%
               values_to = "values")
 ```
 
+
+
 ```{r style-slides, echo = FALSE}
 style_xaringan(
   title_slide_background_image = "img/watercolour_sys02_img34_teacup-ocean.jpg"
 )
 ```
 
-class: inverse, middle, center
 
-# Using xaringan
-
----
-
-## xaringan
-
-- The presentation is created using the `xaringan` package
-
-- Use `---` to separate slides and `--` for incremental builds
-
---
-
-- Like this
-
----
 
 ## Layouts
 

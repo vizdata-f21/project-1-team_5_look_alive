@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Presentation title</title>
+    <title>Global Deforestation</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Team 5 Look Alive   Krystal Hu, Katy Neal, Owen Henry" />
+    <meta name="author" content="Team 5 Look Alive   Krystal Hu, Kate Neal, Owen Henry" />
     <meta name="date" content="2021-09-29" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -11,9 +11,9 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Presentation title
-## Presentation subtitle (if any)
-### Team 5 Look Alive <br> Krystal Hu, Katy Neal, Owen Henry
+# Global Deforestation
+## Is soybean use driving global deforestation?
+### Team 5 Look Alive <br> Krystal Hu, Kate Neal, Owen Henry
 ### Duke University
 ### 2021-09-29
 
@@ -27,27 +27,52 @@ class: center, middle, inverse, title-slide
 
 
 
-```r
-soybean_use %&gt;%
-  group_by(year) %&gt;%
-  summarise(total_human = sum(human_food, na.rm = T),
-            total_animal = sum(animal_feed, na.rm = T)) %&gt;%
-  ggplot(., aes(x = year)) +
-  geom_line(aes(y = total_human), color = "red") +
-  geom_line(aes(y = total_animal), color = "blue")
-```
+class: inverse, middle, center
 
-&lt;img src="presentation_files/figure-html/unnamed-chunk-1-1.png" width="70%" /&gt;
+# Question One
+## What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil’s commercial soybean crops?
+
+---
+## Code for Q1
+
 
 ```r
-soybean_use %&gt;%
+forest_data &lt;- merge(forest, forest_area, by=c("code", "year"))
+
+soybean_use &lt;- soybean_use %&gt;%
+  rowwise() %&gt;%
+  mutate(total = sum(human_food, animal_feed, processed))
+
+soybean_total &lt;- soybean_use %&gt;%
   group_by(year) %&gt;%
-  summarise(total_human = sum(human_food, na.rm = T),
-            total_animal = sum(animal_feed, na.rm = T)) %&gt;%
+  summarise(total_soybean_use_by_year = sum(total, na.rm = T))
+
+brazil_forests &lt;- forest_data %&gt;%
+  filter(code == "BRA")
+
+brazil_loss$total_brazil_forest_loss = rowSums(brazil_loss[,5:15])
+brazil_loss_soybean_use &lt;- merge(brazil_loss, soybean_total, by = c("year")) %&gt;%
+  select(year, total_brazil_forest_loss, total_soybean_use_by_year)
+
+brazil_loss_soybean_use &lt;- brazil_loss_soybean_use %&gt;%
   pivot_longer(!year, 
               names_to = "x1",
               values_to = "values")
 ```
+
+---
+## Plot for Q1
+
+&lt;img src="presentation_files/figure-html/question_1_plot-1.png" title="interpretation." alt="interpretation." width="70%" /&gt;
+---
+class: inverse, middle, center
+
+# Question Two
+## How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation development over time?
+---
+## Plot for Q2
+
+&lt;img src="presentation_files/figure-html/question_2_plot-1.png" title="interpretation." alt="interpretation." width="70%" /&gt;
 
 ```
 ## # A tibble: 106 × 3
@@ -68,23 +93,9 @@ soybean_use %&gt;%
 
 
 
-class: inverse, middle, center
 
-# Using xaringan
 
----
 
-## xaringan
-
-- The presentation is created using the `xaringan` package
-
-- Use `---` to separate slides and `--` for incremental builds
-
---
-
-- Like this
-
----
 
 ## Layouts
 
@@ -152,7 +163,7 @@ glance(model)
 - goes here
 ]
 .pull-right[
-&lt;img src="presentation_files/figure-html/unnamed-chunk-2-1.png" width="100%" /&gt;
+&lt;img src="presentation_files/figure-html/unnamed-chunk-1-1.png" width="100%" /&gt;
 ]
 
 ---
