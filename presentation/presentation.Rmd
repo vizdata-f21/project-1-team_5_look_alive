@@ -1,5 +1,5 @@
 ---
-title: "Global Deforestation"
+title: "Deforestation"
 subtitle: "Is soybean use driving global deforestation?"
 author: "Team 5 Look Alive <br> Krystal Hu, Kate Neal, Owen Henry"
 institute: "Duke University"
@@ -26,6 +26,8 @@ library(xaringanthemer)
 ```
 
 ```{r setup, include=FALSE}
+# set default theme for ggplot2
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
 # For better figure resolution
 knitr::opts_chunk$set(
   fig.retina = 3, 
@@ -101,37 +103,49 @@ class: inverse, middle, center
 ---
 ## Plot for Q2
 
-```{r question_2_plot}
-soybean_use %>%
-  group_by(year) %>%
-  summarise(total_human = sum(human_food, na.rm = T),
-            total_animal = sum(animal_feed, na.rm = T)) %>%
-  ggplot(., aes(x = year)) +
-  geom_line(aes(y = total_human), color = "red") +
-  geom_line(aes(y = total_animal), color = "blue")
+```{r question_2_plot, echo = FALSE}
 
 data2 <-soybean_use %>%
   group_by(year) %>%
   summarise(total_human = sum(human_food, na.rm = T),
             total_animal = sum(animal_feed, na.rm = T)) %>%
   pivot_longer(!year, 
-              names_to = "Type of Use",
-              values_to = "Amount") 
+              names_to = "use",
+              values_to = "amount") 
+
+ data2 <- data2 %>%
+   group_by(year) %>%
+   mutate(prop = amount / sum(amount))
+ 
+ 
+ggplot(data2, aes(fill = use, y = prop, x = year)) + 
+  geom_bar(position ="fill", stat ="identity") +
+  
+  scale_x_continuous (name = "Year",
+                     breaks = seq(from = 1961, to = 2013, by = 10)) +
+  scale_y_continuous(name = "Proportion",
+                     labels = c("0%", "25%", "50%","75%","100%")) +
+  scale_fill_discrete(name = NULL, labels = c("animal food", "human food")) +
+  
+  labs(title = "Global soybean production and use share between 1961-2013",
+       subtitle = "By types of usage") +
+  
+  theme(plot.title = element_text(face = 'bold',size = 13),
+        plot.subtitle = element_text( size = 12),
+        legend.position = "bottom",
+        axis.title.x = element_text(size = 10),
+        axis.title.y = element_text(size = 10),
+        axis.text.x = element_text( size = 7,face = "bold"),
+        axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 7, face = "bold"))
+ 
 
 
-for (i in 1961:2013) {
- data2 %>%
-    filter (year == i) %>%
-    mutate (prop = Amount/sum(Amount)) 
-  }
-
-view(data2)
 ```
 
 
 
 
-
+---
 
 
 ```{r style-slides, echo = FALSE}

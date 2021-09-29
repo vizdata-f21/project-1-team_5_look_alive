@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Global Deforestation</title>
+    <title>Deforestation</title>
     <meta charset="utf-8" />
     <meta name="author" content="Team 5 Look Alive   Krystal Hu, Kate Neal, Owen Henry" />
     <meta name="date" content="2021-09-29" />
@@ -11,7 +11,7 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Global Deforestation
+# Deforestation
 ## Is soybean use driving global deforestation?
 ### Team 5 Look Alive <br> Krystal Hu, Kate Neal, Owen Henry
 ### Duke University
@@ -78,42 +78,12 @@ class: inverse, middle, center
 ---
 ## Plot for Q2
 
-
-```r
-soybean_use %&gt;%
-  group_by(year) %&gt;%
-  summarise(total_human = sum(human_food, na.rm = T),
-            total_animal = sum(animal_feed, na.rm = T)) %&gt;%
-  ggplot(., aes(x = year)) +
-  geom_line(aes(y = total_human), color = "red") +
-  geom_line(aes(y = total_animal), color = "blue")
-```
-
 &lt;img src="presentation_files/figure-html/question_2_plot-1.png" width="70%" /&gt;
 
-```r
-data2 &lt;-soybean_use %&gt;%
-  group_by(year) %&gt;%
-  summarise(total_human = sum(human_food, na.rm = T),
-            total_animal = sum(animal_feed, na.rm = T)) %&gt;%
-  pivot_longer(!year, 
-              names_to = "Type of Use",
-              values_to = "Amount") 
-
-
-for (i in 1961:2013) {
- data2 %&gt;%
-    filter (year == i) %&gt;%
-    mutate (prop = Amount/sum(Amount)) 
-  }
-
-view(data2)
-```
 
 
 
-
-
+---
 
 
 
