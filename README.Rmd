@@ -9,22 +9,6 @@ library(tidyverse)
 ```
 
 
-```{r load-data, echo = FALSE, message = F, warning = F}
-tuesdata <- tidytuesdayR::tt_load('2021-04-06')
-
-forest <- tuesdata$forest
-forest_area <- tuesdata$forest_area
-brazil_loss <- tuesdata$brazil_loss
-soybean_use <- tuesdata$soybean_use
-vegetable_oil <- tuesdata$vegetable_oil
-
-write.csv(forest, "./data/forest.csv")
-write.csv(forest_area, "./data/forest_area.csv")
-write.csv(brazil_loss, "./data/brazil_loss.csv")
-write.csv(soybean_use, "./data/soybean_use.csv")
-write.csv(vegetable_oil, "./data/vegetable_oil.csv")
-```
-
 ## Introduction
 
 Our data comes originally from the UN Food and Agriculture Organization’s Forest Resources Assessment. "Since year-to-year changes in forest cover can be volatile, the UN FAO provide this annual data averaged over five-year periods." It measures the area of forests over time in countries around the world. It also holds more detailed information about the loss of Brazilian forest over time. The data further holds data about soybean production and vegetable oil production by year and country.
