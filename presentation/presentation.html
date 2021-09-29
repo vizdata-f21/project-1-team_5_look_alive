@@ -26,7 +26,6 @@ class: center, middle, inverse, title-slide
 
 
 
-
 class: inverse, middle, center
 
 # Question One
@@ -64,32 +63,56 @@ brazil_loss_soybean_use &lt;- brazil_loss_soybean_use %&gt;%
 ## Plot for Q1
 
 &lt;img src="presentation_files/figure-html/question_1_plot-1.png" title="interpretation." alt="interpretation." width="70%" /&gt;
+
+
 ---
 class: inverse, middle, center
 
 # Question Two
 ## How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation development over time?
+
+---
+## Code for Q2
+
+
 ---
 ## Plot for Q2
 
-&lt;img src="presentation_files/figure-html/question_2_plot-1.png" title="interpretation." alt="interpretation." width="70%" /&gt;
 
+```r
+soybean_use %&gt;%
+  group_by(year) %&gt;%
+  summarise(total_human = sum(human_food, na.rm = T),
+            total_animal = sum(animal_feed, na.rm = T)) %&gt;%
+  ggplot(., aes(x = year)) +
+  geom_line(aes(y = total_human), color = "red") +
+  geom_line(aes(y = total_animal), color = "blue")
 ```
-## # A tibble: 106 × 3
-##     year x1             values
-##    &lt;int&gt; &lt;chr&gt;           &lt;dbl&gt;
-##  1  1961 total_human  16994000
-##  2  1961 total_animal  1503000
-##  3  1962 total_human  17326000
-##  4  1962 total_animal  1800000
-##  5  1963 total_human  18667000
-##  6  1963 total_animal  2060000
-##  7  1964 total_human  19639000
-##  8  1964 total_animal  2002000
-##  9  1965 total_human  17796000
-## 10  1965 total_animal  2162000
-## # … with 96 more rows
+
+&lt;img src="presentation_files/figure-html/question_2_plot-1.png" width="70%" /&gt;
+
+```r
+data2 &lt;-soybean_use %&gt;%
+  group_by(year) %&gt;%
+  summarise(total_human = sum(human_food, na.rm = T),
+            total_animal = sum(animal_feed, na.rm = T)) %&gt;%
+  pivot_longer(!year, 
+              names_to = "Type of Use",
+              values_to = "Amount") 
+
+
+for (i in 1961:2013) {
+ data2 %&gt;%
+    filter (year == i) %&gt;%
+    mutate (prop = Amount/sum(Amount)) 
+  }
+
+view(data2)
 ```
+
+
+
+
 
 
 
