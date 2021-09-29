@@ -12,10 +12,10 @@ by Team 5 Look Alive
 ## Introduction
 
 Our data comes originally from the UN Food and Agriculture
-Organization’s Forest Resources Assessment. “Since year-to-year changes
-in forest cover can be volatile, the UN FAO provide this annual data
-averaged over five-year periods.” It measures the area of forests over
-time in countries around the world. It also holds more detailed
+Organization’s Forest Resources Assessment. “Since year-to-year
+changes in forest cover can be volatile, the UN FAO provide this annual
+data averaged over five-year periods.” It measures the area of forests
+over time in countries around the world. It also holds more detailed
 information about the loss of Brazilian forest over time. The data
 further holds data about soybean production and vegetable oil production
 by year and country.
@@ -30,7 +30,7 @@ types of deforestation, such as `fire` and `small_scale_clearing`.
 country. Finally, the set `vegetable_oil` contains vegetable oil
 production by crop type and year.
 
-## What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil’s commercial soybean crops?
+## Question One \<- What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil’s commercial soybean crops?
 
 ### Introduction
 
@@ -73,13 +73,15 @@ R or lattice plotting functions.
 your analysis. Identify any trends revealed (or not revealed) by the
 plots. Speculate about why the data looks the way it does.
 
-## Question 2 &lt;- Update title to relate to the question you’re answering
+## Question 2 \<- Is soy production driving global deforestation?
 
 ### Introduction
 
-(1-2 paragraphs) Introduction to the question and what parts of the
-dataset are necessary to answer the question. Also discuss why you’re
-interested in this question.
+We want to examine the proportions of soybean production used for human
+food versus for feeding animal change over time and whether this change
+in proportions is related to global deforestation development over time.
+The datasets we will use for this question are `soybean_use` and
+`forest_area`.
 
 ### Approach
 

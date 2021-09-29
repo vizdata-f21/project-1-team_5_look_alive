@@ -4,7 +4,7 @@ author: by Team 5 Look Alive
 output: github_document
 ---
 
-```{r load-packages, echo = FALSE, message = F, warning=F}
+```{r load-packages, echo = FALSE, message = F, warning = F}
 library(tidyverse)
 ```
 
@@ -31,7 +31,7 @@ Our data comes originally from the UN Food and Agriculture Organization’s Fore
 
 The dataset has 5 elements: `forest`, `forest_area`, `brazil_loss`, `soybean_use`, and `vegetable_oil`. The set `forest` contains the change every 5 years in for forest area in conversion. `forest_area` contains the change in global forest area as a percent of global forest area. `brazil_loss` contains the loss of Brazilian forest due to specific types of deforestation, such as `fire` and `small_scale_clearing`. `soybean_use` contains the soybean production and use by year and by country. Finally, the set `vegetable_oil` contains vegetable oil production by crop type and year.
 
-## What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil's commercial soybean crops?
+## Question One <- What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil's commercial soybean crops?
 
 ### Introduction
 
@@ -58,14 +58,14 @@ All plots must be made with ggplot2. Do not use base R or lattice plotting funct
 In the Discussion section, interpret the results of your analysis. Identify any trends revealed (or not revealed) by the plots.
 Speculate about why the data looks the way it does.
 
-## Question 2 <- Update title to relate to the question you’re answering
+## Question 2 <- Is soy production driving global deforestation?
 
 ### Introduction
 
-(1-2 paragraphs)
-Introduction to the question and what parts of the dataset are necessary to answer the question. Also discuss why you’re interested in this question.
+We want to examine the proportions of soybean production used for human food versus for feeding animal change over time and whether this change in proportions is related to global deforestation development over time. The datasets we will use for this question are `soybean_use` and `forest_area`.
 
 ### Approach
+
 
 (1-2 paragraphs)
 Describe what types of plots you are going to make to address your question.
