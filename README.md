@@ -2,20 +2,13 @@ Deforestation Over Time
 ================
 by Team 5 Look Alive
 
-    ## 
-    ##  Downloading file 1 of 5: `forest.csv`
-    ##  Downloading file 2 of 5: `forest_area.csv`
-    ##  Downloading file 3 of 5: `brazil_loss.csv`
-    ##  Downloading file 4 of 5: `soybean_use.csv`
-    ##  Downloading file 5 of 5: `vegetable_oil.csv`
-
 ## Introduction
 
 Our data comes originally from the UN Food and Agriculture
-Organization’s Forest Resources Assessment. “Since year-to-year
-changes in forest cover can be volatile, the UN FAO provide this annual
-data averaged over five-year periods.” It measures the area of forests
-over time in countries around the world. It also holds more detailed
+Organization’s Forest Resources Assessment. “Since year-to-year changes
+in forest cover can be volatile, the UN FAO provide this annual data
+averaged over five-year periods.” It measures the area of forests over
+time in countries around the world. It also holds more detailed
 information about the loss of Brazilian forest over time. The data
 further holds data about soybean production and vegetable oil production
 by year and country.
@@ -30,7 +23,7 @@ types of deforestation, such as `fire` and `small_scale_clearing`.
 country. Finally, the set `vegetable_oil` contains vegetable oil
 production by crop type and year.
 
-## Question One \<- What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil’s commercial soybean crops?
+## What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil’s commercial soybean crops?
 
 ### Introduction
 
@@ -73,7 +66,7 @@ R or lattice plotting functions.
 your analysis. Identify any trends revealed (or not revealed) by the
 plots. Speculate about why the data looks the way it does.
 
-## Question 2 \<- Is soy production driving global deforestation?
+## How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation?
 
 ### Introduction
 

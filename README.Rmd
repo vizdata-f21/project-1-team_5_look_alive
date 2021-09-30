@@ -15,7 +15,7 @@ Our data comes originally from the UN Food and Agriculture Organization’s Fore
 
 The dataset has 5 elements: `forest`, `forest_area`, `brazil_loss`, `soybean_use`, and `vegetable_oil`. The set `forest` contains the change every 5 years in for forest area in conversion. `forest_area` contains the change in global forest area as a percent of global forest area. `brazil_loss` contains the loss of Brazilian forest due to specific types of deforestation, such as `fire` and `small_scale_clearing`. `soybean_use` contains the soybean production and use by year and by country. Finally, the set `vegetable_oil` contains vegetable oil production by crop type and year.
 
-## Question One <- What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil's commercial soybean crops?
+## What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil's commercial soybean crops?
 
 ### Introduction
 
@@ -42,7 +42,7 @@ All plots must be made with ggplot2. Do not use base R or lattice plotting funct
 In the Discussion section, interpret the results of your analysis. Identify any trends revealed (or not revealed) by the plots.
 Speculate about why the data looks the way it does.
 
-## Question 2 <- How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation
+## How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation?
 
 ### Introduction
 
