@@ -82,60 +82,103 @@ class: inverse, middle, center
 
 ## Plan
 
+--
 ### 1. Plot global soybean use share by type of usage
 
+--
+
+### 2. Plot the rate of global deforestation during the same time period
+
+--
+
+### 3. Observe and Compare
+---
+
+
+## 1. Plot global soybean use share by type of usage
+
+.pull-left[
 - Start by grouping all entries in `soybean_use` by decades. For each decade category, add up the values for all entries under `human_food`, `animal_feed`,  and  `processed`.
 
 - Create new variables `prop` that represents the proportions of soybean production used for human food and for animal feed out of the total each decade.
 
-- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1. 
+- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1.]
 
-
-
-### 2. Plot the rate of global deforestation during the same time period
-- Plot percentage of global forest area, `forest_area`, as points in the above graph and connect the dots with a distinguishable line. Observe and compare.
-
-
-
-
-
-
+.pull-right[
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; use &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; amount &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; prop &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1961 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; total_human &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 16994000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9187436 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1961 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; total_animal &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1503000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.0812564 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1962 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; total_human &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17326000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9058873 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1962 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; total_animal &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1800000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.0941127 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1963 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; total_human &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18667000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.9006127 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1963 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; total_animal &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2060000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.0993873 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
 ---
 
-## Code for Q2
-
-
----
-
-## Plot for Q2
-
+## Plot 1
+.center[
 &lt;img src="presentation_files/figure-html/question_2_plot-1.png" width="70%" style="display: block; margin: auto;" /&gt;
-
-
-
----
-
-
+]
 
 ---
-
-## Layouts
-
-You can use plain text
-
-- or bullet points
+## 2. Plot the rate of global deforestation 
 
 .pull-left[
-or text in two columns `\(^*\)`
-]
-.pull-right[
-- like
-- this
+- Calculate share of global forest area by year
+- Plot percentage of global forest area, `forest_area`, as points in the above graph and connect the dots with a distinguishable line. 
 ]
 
-.footnote[
-[*] And add footnotes
+
+
+.pull-right[
+
+
 ]
+
+---
+
+
 
 
 ---
@@ -148,17 +191,6 @@ or text in two columns `\(^*\)`
 
 ---
 
-## Plot and text
-
-.pull-left[
-- Some text
-- goes here
-]
-.pull-right[
-&lt;img src="presentation_files/figure-html/unnamed-chunk-1-1.png" width="100%" /&gt;
-]
-
----
 
 class: inverse, middle, center
 
@@ -289,17 +321,6 @@ class: inverse, middle, center
 # Wrap up
 
 ---
-
-## Feeling adventurous?
-
-- Want to find out more about `xaringan`? See https://slides.yihui.name/xaringan/#1.
-
-- You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.
-
-- But some of you might want to play around with slide styling. The 
-`xaringanthemer` provides some solutions for this that: https://pkg.garrickadenbuie.com/xaringanthemer.
-
-- And if you want more bells and whistles, there is also `xaringanExtra`: https://pkg.garrickadenbuie.com/xaringanExtra.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
