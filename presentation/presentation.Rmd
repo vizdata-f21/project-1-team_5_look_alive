@@ -33,7 +33,6 @@ library(gghighlight)
 # set default theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
 
-
 # For better figure resolution
 knitr::opts_chunk$set(
   fig.retina = 3, 
@@ -52,10 +51,14 @@ vegetable_oil <- read.csv("../data/vegetable_oil.csv")
 soybean_use <- read.csv("../data/soybean_use.csv")
 ```
 
+
 class: inverse, middle, center
 
 # Question One
 ## What countries are driving the growing of Brazil’s soybean crops? What is the relationship between soybean production and deforestation in Brazil?
+
+---
+## World Forest Data
 
 ```{r total_deforestation_by_country, echo=F, message=F}
 forest %>% 
@@ -66,21 +69,10 @@ forest %>%
   gghighlight(min(-(net_forest_conversion)), max_highlight = 1,
               unhighlighted_params = list(size = 1.2, colour =
                                             alpha("gray", 0.6))) +
+  geom_hline(aes(yintercept = 0), color = "red", size = 2) +
   scale_y_continuous(labels = label_number_si()) +
   labs(title = "Net Forest Conversion (hectares)", x = "Year", y = NULL) +
   scale_color_manual(values = c("#009739"))
-```
-
-```{r cumulative_brazil_only, echo=F}
-brazil_loss %>% select(year, total_brazil_forest_loss_hectares) %>%
-  mutate(cum_sum = -(cumsum(total_brazil_forest_loss_hectares))) %>%
-  ggplot() +
-  geom_line(aes(year, cum_sum), size = 3, color = "#009739") +
-  geom_hline(aes(yintercept = 0)) +
-  geom_point(aes(year, cum_sum)) +
-  labs(title = "Forest loss since 2000 (hectares)", x = "Year", y = NULL) +
-  scale_y_continuous(labels = label_number_si()) +
-  scale_x_continuous()
 ```
 
 
@@ -114,6 +106,21 @@ brazil_loss_soybean_use <- brazil_loss_soybean_use %>%
               names_to = "x1",
               values_to = "values")
 ```
+
+---
+## Brazil Forest Loss
+
+```{r cumulative_brazil_only, echo=F}
+brazil_loss %>% select(year, total_brazil_forest_loss_hectares) %>%
+  mutate(cum_sum = -(cumsum(total_brazil_forest_loss_hectares))) %>%
+  ggplot() +
+  geom_line(aes(year, cum_sum), size = 3, color = "#009739") +
+  geom_hline(aes(yintercept = 0), color = "red", size = 2) +
+  labs(title = "Forest loss since 2000 (hectares)", x = "Year", y = NULL) +
+  scale_y_continuous(labels = label_number_si()) +
+  scale_x_continuous()
+```
+
 
 ---
 ## Soybean Use Over Time
@@ -184,19 +191,24 @@ ggplot(brazil_loss_soybean_use, aes(x = year, y = values)) +
 class: inverse, middle, center
 
 # Question Two
-## How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation development over time?
+### How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation development over time?
 
 ---
-## Code for Q2
 
-```{r question_2_code}
+## Plan
 
-```
+--
+### 1. Plot global soybean use share by type of usage
+
+--
+
+### 2. Plot the rate of global deforestation during the same time period
+
+--
+
+### 3. Observe and Compare
 ---
-## Plot for Q2
-
-```{r question_2_plot,fig.align = 'center', echo = FALSE, message = FALSE}
-
+```{r question_2_code, echo = FALSE }
 data2 <-soybean_use %>%
   group_by(year) %>%
   summarise(total_human = sum(human_food, na.rm = T),
@@ -209,7 +221,27 @@ data2 <-soybean_use %>%
    group_by(year) %>%
    mutate(prop = amount / sum(amount))
  
- 
+```
+
+## 1. Plot global soybean use share by type of usage
+
+.pull-left[
+- Start by grouping all entries in `soybean_use` by decades. For each decade category, add up the values for all entries under `human_food`, `animal_feed`,  and  `processed`.
+
+- Create new variables `prop` that represents the proportions of soybean production used for human food and for animal feed out of the total each decade.
+
+- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1.]
+
+.pull-right[
+```{r data2_table, echo = FALSE}
+kable(head(data2), format = "html")
+```
+]
+---
+
+## Plot 1
+.center[
+```{r question_2_plot,fig.align = 'center', echo = FALSE, message = FALSE}
 ggplot(data2, aes(fill = use, y = prop, x = year)) + 
   dark_theme_light() +  
   geom_bar(position ="fill", stat ="identity") +
@@ -233,53 +265,41 @@ ggplot(data2, aes(fill = use, y = prop, x = year)) +
         axis.title.y = element_text(size = 10),
         axis.text.x = element_text( size = 7,face = "bold"),
         axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 7, face = "bold"))
- 
+```
+]
 
+---
+## 2. Plot the rate of global deforestation 
+
+.pull-left[
+- Calculate share of global forest area by year
+- Plot percentage of global forest area, `forest_area`, as points in the above graph and connect the dots with a distinguishable line. 
+]
+
+```{r forest_area__code, echo = FALSE }
+forest2 <- forest_area %>%
+  filter(year == 1990) %>%
+  summarise(total_global = sum(forest_area))
+
+view(forest2)
+ 
+```
+
+.pull-right[
+```{r another_table, echo = FALSE}
 
 ```
 
-
-
+]
 
 ---
-
-
 ```{r style-slides, echo = FALSE}
 style_xaringan(
-  title_slide_background_image = "img/watercolour_sys02_img34_teacup-ocean.jpg"
+  title_slide_background_image = "img/deforestation_back.jpeg"
 )
 ```
 
 
-
-## Layouts
-
-You can use plain text
-
-- or bullet points
-
-.pull-left[
-or text in two columns $^*$
-]
-.pull-right[
-- like
-- this
-]
-
-.footnote[
-[*] And add footnotes
-]
-
----
-
-## Code
-
-```{r boring-regression}
-# a boring regression
-model <- lm(dist ~ speed, data = cars)
-tidy(model)
-glance(model)
-```
 
 ---
 
@@ -303,23 +323,6 @@ ggplot(penguins_modified, aes(x = flipper_length_mm, y = body_mass_g, color = sp
 
 ---
 
-## Plot and text
-
-.pull-left[
-- Some text
-- goes here
-]
-.pull-right[
-```{r warning=FALSE, out.width="100%", fig.width=4, echo=FALSE}
-# see how I changed out.width and fig.width from defaults
-# to make the figure bigger
-ggplot(penguins, aes(x = bill_length_mm, y = species, color = species)) +
-  geom_boxplot() +
-  theme_minimal()
-```
-]
-
----
 
 class: inverse, middle, center
 
@@ -376,14 +379,3 @@ class: inverse, middle, center
 # Wrap up
 
 ---
-
-## Feeling adventurous?
-
-- Want to find out more about `xaringan`? See https://slides.yihui.name/xaringan/#1.
-
-- You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.
-
-- But some of you might want to play around with slide styling. The 
-`xaringanthemer` provides some solutions for this that: https://pkg.garrickadenbuie.com/xaringanthemer.
-
-- And if you want more bells and whistles, there is also `xaringanExtra`: https://pkg.garrickadenbuie.com/xaringanExtra.
