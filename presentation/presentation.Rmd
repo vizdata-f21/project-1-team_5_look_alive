@@ -70,7 +70,7 @@ world_soybean_total <- world_soybean_use %>%
 
 brazil_loss$total_brazil_forest_loss_hectares = rowSums(brazil_loss[,5:15])
 brazil_loss_soybean_use <- merge(brazil_loss, world_soybean_total, by = c("year")) %>%
-  select(year, total_brazil_forest_loss, total) %>%
+  select(year, total_brazil_forest_loss_hectares, total) %>%
   mutate(forest_loss_km2 = total / 100) %>%
   select(-4)
 
@@ -78,7 +78,7 @@ all_soybean_use <- soybean_use %>%
   rowwise() %>%
   mutate(total = sum(human_food, animal_feed, processed, na.rm = T))
 
-soybean_total <- soybean_use %>%
+soybean_total <- all_soybean_use %>%
   group_by(year) %>%
   summarise(world_soybean_use = sum(total, na.rm = T))
 
@@ -96,7 +96,7 @@ ggplot(brazil_loss_soybean_use, aes(x = year, y = values)) +
   geom_line() +
   facet_wrap(.~x1, ncol = 1, scales="free_y",
              labeller = as_labeller(c(total = "Soybean use (tons)",
-                                      total_brazil_forest_loss = "Brazil's Forest Loss (hectares)"))) +
+                                      total_brazil_forest_loss_hectares = "Brazil's Forest Loss (hectares)"))) +
   scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))  +
   ylab(NULL) +
   theme(strip.background = element_blank(),
