@@ -24,6 +24,7 @@ library(palmerpenguins)
 library(knitr)
 library(xaringanthemer)
 library(ggdark)
+library(scales)
 ```
 
 ```{r setup, include=FALSE}
@@ -60,23 +61,29 @@ class: inverse, middle, center
 ```{r question_1_code}
 forest_data <- merge(forest, forest_area, by=c("code", "year"))
 
-soybean_use <- soybean_use %>%
+world_soybean_use <- soybean_use %>%
+  filter(entity == "World")
+
+world_soybean_total <- world_soybean_use %>%
   rowwise() %>%
   mutate(total = sum(human_food, animal_feed, processed))
 
+brazil_loss$total_brazil_forest_loss_hectares = rowSums(brazil_loss[,5:15])
+brazil_loss_soybean_use <- merge(brazil_loss, world_soybean_total, by = c("year")) %>%
+  select(year, total_brazil_forest_loss, total) %>%
+  mutate(forest_loss_km2 = total / 100) %>%
+  select(-4)
+
+all_soybean_use <- soybean_use %>%
+  rowwise() %>%
+  mutate(total = sum(human_food, animal_feed, processed, na.rm = T))
+
 soybean_total <- soybean_use %>%
   group_by(year) %>%
-  summarise(total_soybean_use_by_year = sum(total, na.rm = T))
-
-brazil_forests <- forest_data %>%
-  filter(code == "BRA")
-
-brazil_loss$total_brazil_forest_loss = rowSums(brazil_loss[,5:15])
-brazil_loss_soybean_use <- merge(brazil_loss, soybean_total, by = c("year")) %>%
-  select(year, total_brazil_forest_loss, total_soybean_use_by_year)
+  summarise(world_soybean_use = sum(total, na.rm = T))
 
 brazil_loss_soybean_use <- brazil_loss_soybean_use %>%
-  pivot_longer(!year, 
+  pivot_longer(!year,
               names_to = "x1",
               values_to = "values")
 ```
@@ -87,7 +94,14 @@ brazil_loss_soybean_use <- brazil_loss_soybean_use %>%
 ```{r question_1_plot, echo = FALSE, warning = FALSE, fig.alt = "interpretation."}
 ggplot(brazil_loss_soybean_use, aes(x = year, y = values)) +
   geom_line() +
-  facet_wrap(.~x1, ncol = 1, scales="free_y")
+  facet_wrap(.~x1, ncol = 1, scales="free_y",
+             labeller = as_labeller(c(total = "Soybean use (tons)",
+                                      total_brazil_forest_loss = "Brazil's Forest Loss (hectares)"))) +
+  scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))  +
+  ylab(NULL) +
+  theme(strip.background = element_blank(),
+        strip.placement = "outside",
+        strip.text.y = element_text(face = "bold"))
 ```
 
 
