@@ -50,10 +50,11 @@ vegetable_oil <- read.csv("../data/vegetable_oil.csv")
 soybean_use <- read.csv("../data/soybean_use.csv")
 ```
 
+
 class: inverse, middle, center
 
 # Question One
-## What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil’s commercial soybean crops?
+### What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil’s commercial soybean crops?
 
 ---
 ## Code for Q1
@@ -109,15 +110,39 @@ ggplot(brazil_loss_soybean_use, aes(x = year, y = values)) +
 class: inverse, middle, center
 
 # Question Two
-## How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation development over time?
+### How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation development over time?
 
 ---
+
+## Plan
+
+### 1. Plot global soybean use share by type of usage
+
+- Start by grouping all entries in `soybean_use` by decades. For each decade category, add up the values for all entries under `human_food`, `animal_feed`,  and  `processed`.
+
+- Create new variables `prop` that represents the proportions of soybean production used for human food and for animal feed out of the total each decade.
+
+- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1. 
+
+
+
+### 2. Plot the rate of global deforestation during the same time period
+- Plot percentage of global forest area, `forest_area`, as points in the above graph and connect the dots with a distinguishable line. Observe and compare.
+
+
+
+
+
+
+---
+
 ## Code for Q2
 
 ```{r question_2_code}
 
 ```
 ---
+
 ## Plot for Q2
 
 ```{r question_2_plot,fig.align = 'center', echo = FALSE, message = FALSE}
@@ -165,17 +190,15 @@ ggplot(data2, aes(fill = use, y = prop, x = year)) +
 
 
 
-
 ---
-
-
 ```{r style-slides, echo = FALSE}
 style_xaringan(
-  title_slide_background_image = "img/watercolour_sys02_img34_teacup-ocean.jpg"
+  title_slide_background_image = "img/deforestation_back.jpeg"
 )
 ```
 
 
+---
 
 ## Layouts
 
@@ -195,16 +218,6 @@ or text in two columns $^*$
 [*] And add footnotes
 ]
 
----
-
-## Code
-
-```{r boring-regression}
-# a boring regression
-model <- lm(dist ~ speed, data = cars)
-tidy(model)
-glance(model)
-```
 
 ---
 
