@@ -190,7 +190,7 @@ feed in each year.
 
 #### Figure 1
 
-```{r soybean_use_share,  message = FALSE, fig.alt = "global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013"}
+```{r soybean_use_share,  message = FALSE, warning=F, fig.alt = "global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013"}
 
 data2 <-soybean_use %>%
   group_by(year) %>%
@@ -204,12 +204,14 @@ data2 <- data2 %>%
    group_by(year) %>%
    mutate(prop = amount / sum(amount))
  
-ggplot(data2, aes(fill = use, y = prop, x = year)) + 
-  dark_theme_light() +  
+data2 %>%
+  filter(year >= 1977) %>%
+  ggplot(aes(fill = use, y = prop, x = year)) + 
   geom_bar(position ="fill", stat ="identity") +
   
   scale_x_continuous (name = "Year",
-                     breaks = seq(from = 1961, to = 2013, by = 10)) +
+                      limits = c(1990, 2013),
+                     breaks = seq(from = 1990, to = 2013, by = 10)) +
   scale_y_continuous(name = "Proportion",
                      labels = c("0%", "25%", "50%","75%","100%")) +
   scale_fill_manual(values = c("orangered4", "goldenrod1"), 
@@ -233,14 +235,16 @@ ggplot(data2, aes(fill = use, y = prop, x = year)) +
 
 #### Figure 2
 
-```{r forest_net_converstion, message = FALSE, fig.alt = "The net loss in global forest area to use land for another purpose between 1990 and 2015"}
+```{r forest_net_converstion, message = FALSE, warning=F, fig.alt = "The net loss in global forest area to use land for another purpose between 1990 and 2015"}
 forest2 <- forest %>%
   filter(entity == "World")
 
 ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) + 
   geom_area(aes(color = entity), size = 2.5, fill= "lightgray", alpha = 0.5) +
   scale_color_manual(values = c("burlywood4")) +
-  scale_y_reverse() +
+  scale_y_continuous(labels = label_number_si()) +
+  scale_x_continuous(limits = c(1990, 2013),
+                     breaks = seq(from = 1990, to = 2013, by = 10)) +
 
   
   labs(title = "Global Net Forest Conversion (hectares)", x = "Year", y = NULL) +
