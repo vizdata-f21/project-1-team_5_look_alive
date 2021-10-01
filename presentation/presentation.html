@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="author" content="Team 5 Look Alive   Krystal Hu, Kate Neal, Owen Henry" />
     <meta name="date" content="2021-09-30" />
-    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -31,33 +30,41 @@ class: center, middle, inverse, title-slide
 class: inverse, middle, center
 
 # Question One
-## What countries are driving the growing of Brazil’s soybean crops? What is the relationship between soybean production and deforestation in Brazil?
+### What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil’s commercial soybean crops?
 
 ---
-## World Forest Data
-
-&lt;img src="presentation_files/figure-html/total_deforestation_by_country-1.png" width="70%" /&gt;
+## Code for Q1
 
 
+```r
+forest_data &lt;- merge(forest, forest_area, by=c("code", "year"))
 
+world_soybean_use &lt;- soybean_use %&gt;%
+  filter(entity == "World")
 
----
-## Brazil Forest Loss
+world_soybean_total &lt;- world_soybean_use %&gt;%
+  rowwise() %&gt;%
+  mutate(total = sum(human_food, animal_feed, processed))
 
-&lt;img src="presentation_files/figure-html/cumulative_brazil_only-1.png" width="70%" /&gt;
+brazil_loss$total_brazil_forest_loss_hectares = rowSums(brazil_loss[,5:15])
+brazil_loss_soybean_use &lt;- merge(brazil_loss, world_soybean_total, by = c("year")) %&gt;%
+  select(year, total_brazil_forest_loss_hectares, total) %&gt;%
+  mutate(forest_loss_km2 = total / 100) %&gt;%
+  select(-4)
 
+all_soybean_use &lt;- soybean_use %&gt;%
+  rowwise() %&gt;%
+  mutate(total = sum(human_food, animal_feed, processed, na.rm = T))
 
----
-## Soybean Use Over Time
+soybean_total &lt;- all_soybean_use %&gt;%
+  group_by(year) %&gt;%
+  summarise(world_soybean_use = sum(total, na.rm = T))
 
-&lt;img src="presentation_files/figure-html/unnamed-chunk-1-1.png" width="70%" /&gt;
-
-
----
-## Soybean Use Over Time
-
-
-&lt;img src="presentation_files/figure-html/unnamed-chunk-2-1.png" title="interpretation." alt="interpretation." width="70%" /&gt;
+brazil_loss_soybean_use &lt;- brazil_loss_soybean_use %&gt;%
+  pivot_longer(!year,
+              names_to = "x1",
+              values_to = "values")
+```
 
 ---
 ## Plot for Q1
@@ -151,21 +158,63 @@ class: inverse, middle, center
 
 ## Plot 1
 .center[
-&lt;img src="presentation_files/figure-html/question_2_plot-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="presentation_files/figure-html/soybean_share_by_usage-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
 ## 2. Plot the rate of global deforestation 
 
 .pull-left[
+####Net forest conversion: The net change in forest area (loss and gain) describes the sum of all changes in forest area over a specific period of time (including reductions due to deforestation and disasters, and increases due to afforestation and expansion of forests during the period).
+
 - Calculate share of global forest area by year
 - Plot percentage of global forest area, `forest_area`, as points in the above graph and connect the dots with a distinguishable line. 
 ]
 
-
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; X &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; entity &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; code &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; net_forest_conversion &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 465 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; World &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OWID_WRL &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1990 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -7818000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 466 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; World &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OWID_WRL &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2000 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -5117000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 467 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; World &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OWID_WRL &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2010 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -4801000 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 468 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; World &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; OWID_WRL &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2015 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -5150000 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 
 .pull-right[
-
+&lt;img src="presentation_files/figure-html/global_deforestation_rate-1.png" width="70%" /&gt;
 
 ]
 
