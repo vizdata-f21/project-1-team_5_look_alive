@@ -51,6 +51,11 @@ vegetable_oil <- read.csv("../data/vegetable_oil.csv")
 soybean_use <- read.csv("../data/soybean_use.csv")
 ```
 
+class: inverse, middle, center
+
+# Question One
+---
+class: inverse, left
 
 ## Who, What, Why
 
@@ -65,24 +70,7 @@ soybean_use <- read.csv("../data/soybean_use.csv")
 
 ### 3. Why is the deforestation happening?
 
----
-## World Forest Data
 
-```{r total_deforestation_by_country, echo=F, message=F}
-
-forest %>% 
-  filter(!is.na(code),
-         entity != "World") %>%
-  ggplot() +
-  geom_line(aes(year, net_forest_conversion, color = entity), size = 3) +
-  gghighlight(min(-(net_forest_conversion)), max_highlight = 1,
-              unhighlighted_params = list(size = 1.2, colour =
-                                            alpha("gray", 0.6))) +
-  geom_hline(aes(yintercept = 0), color = "red", size = 2) +
-  scale_y_continuous(labels = label_number_si()) +
-  labs(title = "Net Forest Conversion (hectares)", x = "Year", y = NULL) +
-  scale_color_manual(values = c("#009739"))
-```
 
 
 ```{r question_1_code, include=F}
@@ -203,7 +191,6 @@ brazil_loss_no_total  %>%
 ```{r soybean_use_continents, echo=F, message=F, warning=F}
 soy_use_by_continent <- soybean_use %>%
   filter(entity %in% c('Northern America', 'South America', 'Asia', 'Africa', 'Oceania', 'Europe')) %>%
-  mutate(entity = if_else(entity == "Northern America", "North America", entity)) %>%
   rowwise() %>%
   mutate(total = sum(human_food, animal_feed, processed, na.rm = T))
 
@@ -246,20 +233,6 @@ soy_use_by_country %>%
   scale_color_manual(values = c("#6CACE4", "#009739", "#EE1C25", "#0A3161"))
 ```
 
----
-## TBD if we include this one
-
-```{r question_1_plot, echo = FALSE, warning = FALSE, fig.alt = "interpretation."}
-ggplot(brazil_loss_soybean_use, aes(x = year, y = values)) +
-  geom_line(size = 2, color = "#009739") +
-  facet_wrap(.~x1, ncol = 1, scales="free_y",
-             labeller = as_labeller(c(total = "Worldwide soybean use (tonnes)",
-                                    total_brazil_forest_loss_hectares = "Brazil Forest Change (hectares)"))) +
-  scale_y_continuous(labels = label_number_si())  +
-  ylab(NULL) +
-  geom_hline(data = data.frame(yint=0, x1="total_brazil_forest_loss_hectares"), 
-             aes(yintercept = yint, color = "red"), show.legend = F)
-```
 
 
 ---
@@ -269,6 +242,7 @@ class: inverse, middle, center
 ### How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation development over time?
 
 ---
+class: inverse, left
 
 ## Analysis Plan
 
@@ -283,6 +257,7 @@ class: inverse, middle, center
 
 ### 3. Observe and Compare
 ---
+
 ```{r question_2_code, echo = FALSE }
 data2 <-soybean_use %>%
   group_by(year) %>%
@@ -298,7 +273,7 @@ data2 <-soybean_use %>%
  
 ```
 
-## 1. Plot global soybean use share by type of usage
+## I. Plot global soybean use share by type of usage
 
 .pull-left[
 - Start by grouping all entries in `soybean_use` by decades. For each decade category, add up the values for all entries under `human_food`, `animal_feed`,  and  `processed`.
@@ -309,17 +284,16 @@ data2 <-soybean_use %>%
 
 .pull-right[
 ```{r data2_table, echo = FALSE, fig.align='center'}
-
 kable(head(data2), format = "html")
 ```
 ]
 ---
-## 1. Plot global soybean use share by type of usage
+## I. Plot global soybean use share by type of usage
 
-.pull-left[
-- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1.]
 
-.pull-right[
+- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1.
+
+
 ```{r soybean_use_share, echo = FALSE, message = FALSE, fig.align='center'}
 
 ggplot(data2, aes(fill = use, y = prop, x = year)) + 
@@ -341,13 +315,14 @@ ggplot(data2, aes(fill = use, y = prop, x = year)) +
         legend.position = "bottom",
         legend.key.size = unit(.5, "cm"),
         legend.text = element_text(size = 10),
+        legend.box.spacing = unit(0.2, "cm"),
         axis.title.x = element_text(size = 10),
         axis.title.y = element_text(size = 10),
         axis.text.x = element_text( size = 7,face = "bold"),
         axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 7, face = "bold"))
 
 ```
-]
+
 ---
 ## 2. Plot the rate of global deforestation 
 
@@ -374,6 +349,27 @@ ggplot(data=forest2, aes(x = year, y=net_forest_conversion, group = 1)) +
 ]
 
 ---
+
+## World Forest Data
+
+```{r total_deforestation_by_country, echo=F, message=F}
+
+forest %>% 
+  filter(!is.na(code),
+         entity != "World") %>%
+  ggplot() +
+  geom_line(aes(year, net_forest_conversion, color = entity), size = 3) +
+  gghighlight(min(-(net_forest_conversion)), max_highlight = 1,
+              unhighlighted_params = list(size = 1.2, colour =
+                                            alpha("gray", 0.6))) +
+  geom_hline(aes(yintercept = 0), color = "red", size = 2) +
+  scale_y_continuous(labels = label_number_si()) +
+  labs(title = "Net Forest Conversion (hectares)", x = "Year", y = NULL) +
+  scale_color_manual(values = c("#009739"))
+```
+
+---
+
 ```{r style-slides, echo = FALSE}
 style_xaringan(
   title_slide_background_image = "img/deforestation_back.jpeg"
@@ -381,43 +377,12 @@ style_xaringan(
 ```
 
 
-
 ---
-
-## Plots
-
-```{r recode-species, echo = FALSE}
-# In this chunk I'm doing a bunch of analysis that I don't want to present 
-# in my slides. But I need the resulting data frame for a plot I want to present.
-penguins_modified <- penguins %>%
-  mutate(species = fct_other(species, keep = "Adelie"))
-```
-
-```{r plot-penguins, echo = FALSE, warning = FALSE, fig.alt = "Body mass vs. flipper lenght of Palmer Penguins for species Adelie and all the others combined together. There is a relatively strong, positive relationship between the two variables. The Adelie penguins are clustered together but they don't exhibit a different trend than the rest of the penguins."}
-# Code hidden with echo = FALSE
-# Uses modified penguins dataset from previous chunk
-# Play around with height and width until you're happy with the look
-ggplot(penguins_modified, aes(x = flipper_length_mm, y = body_mass_g, color = species)) +
-  geom_point() + 
-  theme_minimal()
-```
-
----
-
 
 class: inverse, middle, center
 
 # A new section...
 
----
-
-## Tables
-
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
-
-```{r penguins-table, echo = FALSE}
-kable(head(penguins), format = "html")
-```
 
 ---
 
@@ -433,30 +398,4 @@ Or you can also include a full page image. See next slide.
 
 background-image: url(img/watercolour_sys02_img32_percolate.jpg)
 
----
 
-## Math Expressions
-
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. &#36;\alpha+\beta$ renders $\alpha+\beta$. You can use the display style with double dollar signs:
-
-```
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-```
-
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-
-Limitations:
-
-1. The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
-
-1. There should not be spaces after the opening `$` or before the closing `$`.
-
-1. Math does not work on the title slide (see [#61](https://github.com/yihui/xaringan/issues/61) for a workaround).
-
----
-
-class: inverse, middle, center
-
-# Wrap up
-
----
