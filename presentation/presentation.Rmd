@@ -406,13 +406,14 @@ ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) +
 ## III. Compare
 
 .pull-left[
-```{r compare, echo = FALSE, message = FALSE, out.width = "500%", out.height= "500%"}
+```{r compare, echo = FALSE, message = FALSE, warning = F, out.width = "500%", out.height= "500%"}
 data2 %>%
   filter(year >= 1977) %>%
   ggplot(aes(fill = use, y = prop, x = year)) + 
   geom_bar(position ="fill", stat ="identity") +
   
   scale_x_continuous (name = "Year",
+                      limits = c(1990, 2013),
                      breaks = seq(from = 1990, to = 2013, by = 10)) +
   scale_y_continuous(name = "Proportion",
                      labels = c("0%", "25%", "50%","75%","100%")) +
@@ -436,7 +437,7 @@ data2 %>%
 ]
 
 .pull-right[
-```{r observe, echo = F, message = F, out.width = "200%"}
+```{r observe, echo = F, message = F, warning = F,out.width = "200%"}
 forest2 <- forest %>%
   filter(entity == "World")
 
@@ -444,6 +445,8 @@ ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) +
   geom_area(aes(color = entity), size = 2.5, fill= "lightgray", alpha = 0.5) +
   scale_color_manual(values = c("burlywood4")) +
   scale_y_continuous(labels = label_number_si()) +
+  scale_x_continuous(limits = c(1990, 2013),
+                     breaks = seq(from = 1990, to = 2013, by = 10)) +
 
   
   labs(title = "Global Net Forest Conversion (hectares)", x = "Year", y = NULL) +
@@ -456,7 +459,7 @@ ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) +
 ```
 ]
 
-#### The net loss in global forest area to use land for another purpose (i.e. creating pasture for cattle) matches the pattern of increase in soybean use shared by animals.
+#### The pattern of increase in soybean use for animal food matches with a decrease in deforestation.
 
 ```{r style-slides, echo = FALSE}
 style_xaringan(
@@ -464,6 +467,12 @@ style_xaringan(
 )
 ```
 
+---
 
+#Conclusion
+
+- Increased global use of soybeans is related with continued deforestation in Brazil, the world's leading soybean producer (surpassing USA as of May 2021)
+
+- Increased proportion of soybeans used for animal feed (vs. those used for human food) is related with continued land conversion (natural land --> human used), albeit at a slower rate.
 
 
