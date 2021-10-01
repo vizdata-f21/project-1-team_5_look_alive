@@ -6,6 +6,15 @@ output: github_document
 
 ```{r load-packages, echo = FALSE, message = F, warning = F}
 library(tidyverse)
+library(tidymodels)
+library(palmerpenguins)
+library(knitr)
+library(xaringanthemer)
+library(ggdark)
+library(scales)
+library(viridis)
+library(gghighlight)
+knitr::opts_chunk$set(echo = F)
 ```
 
 
@@ -32,15 +41,6 @@ Putting all of these factors together gives us a basic understanding of global d
 #### Figure 1
 
 ```{r cumulative_brazil_only,  message = F, fig.alt="Brazil lost 30m hectares of forest from 2000 to 2013."}
-library(tidyverse)
-library(tidymodels)
-library(palmerpenguins)
-library(knitr)
-library(xaringanthemer)
-library(ggdark)
-library(scales)
-library(viridis)
-library(gghighlight)
 
 # set default theme for ggplot2
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
