@@ -23,11 +23,13 @@ These ideas stuck us as the most essential elements of deforestation, and gainin
 
 ### Approach
 
-In this question, we planned on exploring three things: the who, the what, and the why of deforestation. First, we chose to use a line plot to examine trends over time in deforestation. This would allow us to get a rough understanding of how many countries are facing the most deforestation and examine the most deforested country’s data. From here, we could then examine the “what”. To do this, we decided to compare the proportions with an area plot. This gave us the opportunity to showcase which causes are the most impactful in Brazil’s deforestation. Finally, to understand the “why” of deforestation, we selected to examine one of the leading causes of deforestation in Brazil. Using line plots again allowed us to highlight which regions and countries are most influential in driving soybean production globally.
+In this question, we planned on exploring three things: the who, the what, and the why of deforestation. First, we chose to use a line plot to examine trends over time in deforestation. This would allow us to get a rough understanding of how many countries are facing the most deforestation and examine the most deforested country’s data, using a cumulative line plot of deforestation and a bar plot to compare across years. From here, we could then examine the “what”. To do this, we decided to compare the proportions with an area plot. This gave us the opportunity to showcase which causes are the most impactful in Brazil’s deforestation. Finally, to understand the “why” of deforestation, we selected to examine one of the leading causes of deforestation in Brazil. Using line plots again allowed us to highlight which regions and countries are most influential in driving soybean production globally.
 
 Putting all of these factors together gives us a basic understanding of global deforestation.
 
 ### Analysis
+
+#### Figure 1
 
 ```{r cumulative_brazil_only, echo=F, message = F, fig.alt="Brazil lost 30m hectares of forest from 2000 to 2013."}
 library(tidyverse)
@@ -62,17 +64,17 @@ brazil_loss$total_brazil_forest_loss_hectares = rowSums(brazil_loss[,5:15])
 
 annotation <- data.frame(
    x = c(2010),
-   y = c(-7000000),
+   y = c(-7300000),
    label = c("Brazil has lost")
 )
 annotation2 <- data.frame(
    x = c(2010),
-   y = c(-10400000),
+   y = c(-10500000),
    label = c("over 30 million")
 )
 annotation3 <- data.frame(
    x = c(2010),
-   y = c(-16000000),
+   y = c(-15700000),
    label = c("hectares of forest\nsince 2000")
 )
 
@@ -81,22 +83,25 @@ brazil_loss %>% select(year, total_brazil_forest_loss_hectares) %>%
   mutate(cum_sum = -(cumsum(total_brazil_forest_loss_hectares))) %>%
   ggplot() +
   geom_line(aes(year, cum_sum), size = 2, color = "#009739") +
-  geom_hline(aes(yintercept = 0), color = "red", size = 2) +
-  labs(title = "Brazilian forest loss", subtitle = "2000 to 2013", x = NULL, y = "Hectares",
-       caption = "Fig. 1") +
+  geom_bar(aes(year, -total_brazil_forest_loss_hectares), stat="identity") +
+  geom_hline(aes(yintercept = 0), color = "red", size = 1.5) +
+  labs(title = "Cumulative Brazilian forest loss", subtitle = "2000 to 2013", x = NULL, y = "Hectares") +
   scale_y_continuous(labels = label_number_si()) +
   scale_x_continuous() +
   geom_text(data=annotation, aes(x=x, y=y, label=label),
            color="black", 
-           size=7 , angle=0) +
+           size=6, angle=0) +
   geom_text(data=annotation2, aes(x=x, y=y, label=label),
            color="red", 
-           size=7 , angle=0, fontface="bold") +
+           size=7, angle=0, fontface="bold") +
   geom_text(data=annotation3, aes(x=x, y=y, label=label),
            color="black", 
-           size=7 , angle=0) +
-  scale_x_continuous(breaks = seq(from = 2000, to = 2013, by = 4))
+           size=6, angle=0) +
+  scale_x_continuous(breaks = seq(from = 2000, to = 2013, by = 4)) +
+  theme(panel.grid.minor.x = element_blank())
 ```
+
+#### Figure 2
 
 ```{r drivers_of_brazil_deforstation, echo=F, message = F, fig.alt = "Pasture is the most common cause of deforestation in Brazil, "}
 brazil_loss_no_total <- read.csv("data/brazil_loss.csv") %>% select(-(1:3))
@@ -128,6 +133,8 @@ ggplot(brazil_loss_no_total, aes(year, percentage, fill=cause)) +
   scale_x_continuous(breaks = seq(from = 2000, to = 2013, by = 4)) +
   theme(legend.position = "bottom")
 ```
+
+#### Figure 3
 
 ```{r soybean_use_countries, echo = FALSE, message=F, fig.alt = "China, US, Brazil, Argentina identified as countries that use the most soybean."}
 soy_use_by_country <- soybean_use %>%

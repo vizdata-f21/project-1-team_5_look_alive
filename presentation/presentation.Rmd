@@ -88,7 +88,8 @@ forest %>%
   scale_y_continuous(labels = label_number_si()) +
   labs(title = "Net forest conversion by country", x = NULL, y = "Hectares") +
   scale_color_manual(values = c("#009739")) +
-  scale_x_continuous(breaks = seq(from = 1990, to = 2015, by = 4))
+  scale_x_continuous(breaks = seq(from = 1990, to = 2015, by = 5)) +
+  theme(panel.grid.minor.x = element_blank())
 ```
 
 
@@ -129,17 +130,17 @@ brazil_loss_soybean_use <- brazil_loss_soybean_use %>%
 ```{r cumulative_brazil_only, echo=F, message = F, fig.alt="Brazil lost 30m hectares of forest from 2000 to 2013."}
 annotation <- data.frame(
    x = c(2010),
-   y = c(-5000000),
+   y = c(-6200000),
    label = c("Brazil has lost")
 )
 annotation2 <- data.frame(
    x = c(2010),
-   y = c(-10200000),
+   y = c(-10300000),
    label = c("over 30 million")
 )
 annotation3 <- data.frame(
    x = c(2010),
-   y = c(-18000000),
+   y = c(-16700000),
    label = c("hectares of forest\nsince 2000")
 )
 
@@ -148,20 +149,22 @@ brazil_loss %>% select(year, total_brazil_forest_loss_hectares) %>%
   mutate(cum_sum = -(cumsum(total_brazil_forest_loss_hectares))) %>%
   ggplot() +
   geom_line(aes(year, cum_sum), size = 2, color = "#009739") +
-  geom_hline(aes(yintercept = 0), color = "red", size = 2) +
-  labs(title = "Brazilian forest loss", subtitle = "2000 to 2013", x = NULL, y = "Hectares") +
+  geom_bar(aes(year, -total_brazil_forest_loss_hectares), stat="identity") +
+  geom_hline(aes(yintercept = 0), color = "red", size = 1.5) +
+  labs(title = "Cumulative Brazilian forest loss", subtitle = "2000 to 2013", x = NULL, y = "Hectares") +
   scale_y_continuous(labels = label_number_si()) +
   scale_x_continuous() +
   geom_text(data=annotation, aes(x=x, y=y, label=label),
            color="black", 
-           size=7 , angle=0) +
+           size=6, angle=0) +
   geom_text(data=annotation2, aes(x=x, y=y, label=label),
            color="red", 
-           size=7 , angle=0, fontface="bold") +
+           size=7, angle=0, fontface="bold") +
   geom_text(data=annotation3, aes(x=x, y=y, label=label),
            color="black", 
-           size=7 , angle=0) +
-  scale_x_continuous(breaks = seq(from = 2000, to = 2013, by = 4))
+           size=6, angle=0) +
+  scale_x_continuous(breaks = seq(from = 2000, to = 2013, by = 4)) +
+  theme(panel.grid.minor.x = element_blank())
 ```
 
 ---

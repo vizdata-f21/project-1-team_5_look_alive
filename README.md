@@ -37,23 +37,30 @@ In this question, we planned on exploring three things: the who, the
 what, and the why of deforestation. First, we chose to use a line plot
 to examine trends over time in deforestation. This would allow us to get
 a rough understanding of how many countries are facing the most
-deforestation and examine the most deforested country’s data. From here,
-we could then examine the “what”. To do this, we decided to compare the
-proportions with an area plot. This gave us the opportunity to showcase
-which causes are the most impactful in Brazil’s deforestation. Finally,
-to understand the “why” of deforestation, we selected to examine one of
-the leading causes of deforestation in Brazil. Using line plots again
-allowed us to highlight which regions and countries are most influential
-in driving soybean production globally.
+deforestation and examine the most deforested country’s data, using a
+cumulative line plot of deforestation and a bar plot to compare across
+years. From here, we could then examine the “what”. To do this, we
+decided to compare the proportions with an area plot. This gave us the
+opportunity to showcase which causes are the most impactful in Brazil’s
+deforestation. Finally, to understand the “why” of deforestation, we
+selected to examine one of the leading causes of deforestation in
+Brazil. Using line plots again allowed us to highlight which regions and
+countries are most influential in driving soybean production globally.
 
 Putting all of these factors together gives us a basic understanding of
 global deforestation.
 
 ### Analysis
 
+#### Figure 1
+
 <img src="README_files/figure-gfm/cumulative_brazil_only-1.png" title="Brazil lost 30m hectares of forest from 2000 to 2013." alt="Brazil lost 30m hectares of forest from 2000 to 2013."  />
 
+#### Figure 2
+
 <img src="README_files/figure-gfm/drivers_of_brazil_deforstation-1.png" title="Pasture is the most common cause of deforestation in Brazil, " alt="Pasture is the most common cause of deforestation in Brazil, " width="70%" />
+
+#### Figure 3
 
 <img src="README_files/figure-gfm/soybean_use_countries-1.png" title="China, US, Brazil, Argentina identified as countries that use the most soybean." alt="China, US, Brazil, Argentina identified as countries that use the most soybean." width="70%" />
 
