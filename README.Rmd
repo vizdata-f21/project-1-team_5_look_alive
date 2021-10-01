@@ -172,18 +172,11 @@ Figure 3 gives a look into which countries are the largest consumers of soybean,
 
 ### Introduction
 
-We want to examine the proportions of soybean production used for human food versus for feeding animal change over time and whether this change in proportions is related to global deforestation development over time. The datasets we will use for this question are `soybean_use` and `forest`.
+In the second question, we wanted to start understanding the patterns of soybean use over time. After gaining and understanding of how total soybean use and production have drastically increased around the world in the last 50 years, we looked in question 2 at the specific ways soybean is used within an overall increasing trend and how that relates to deforestation globally. 
 
 ### Approach
 
-1. Start by grouping all entries in `soybean_use.csv` by years. For each year, add up the values for all entries under `human_food` and `animal_feed`.
-
-2. Create new variables `prop` that represents the proportions of soybean production used for human food and for animal
-feed in each year.
-
-3. Use a stacked bar chart to plot the difference in proportions of soybean use between human food and animal feed via different fill colors. The x-axis represents `year` and the y-axis represents 'prop'.
-
-4. Use a line graph to plot the negative net conversion of global forest area in 'forest.csv', and an area graph to comparatively represent the remaining forest area.
+We started by looking at the proportion of soybeans used for animal feed as compared to human food, over time. We followed this by looking at trends in global forest conservation, and compared these two plots to see if our understanding of deforestation causes matched with the trend in changing patterns of soybean use.  
 
 
 ### Analysis
@@ -258,9 +251,13 @@ ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) +
 
 ### Discussion
 
-(1-3 paragraphs)
-In the Discussion section, interpret the results of your analysis. Identify any trends revealed (or not revealed) by the plots.
-Speculate about why the data looks the way it does.
+Figure 1 portrays the changing proportion of how much soybean is used for animal feed versus human food each year 1961-2013. We can see a relatively clear trend of an increase in animal/human food use. What we had observed is that the proportion of soybean use for animal feed (mostly used for feeding poultry, hogs, cattle and dairy production ) drastically increased, from less than 10% share in 1961 to more than 50% share in 2013; while the proportion of soybean use for human food (like salad oil, tofu, or tempeh) had decreased accordingly. Soybean meal is a highly palatable form of protein, and is often used as the dominant source of protein for most types farm animals, including pigs, cattle, poultry and aquaculture (Soybean Meal). Knowing this, it was not surprising to see that animal use has increased, as we know that humans as a species are eating more meat.
+
+Figure 2 shows the global net forest conversion in hectares (1000 sq m). Net Forest conversion is the clearing of natural forests to use the land for another purpose. Since the net forest conversion are all negative (not positive), from 1990 till 2015, it means that more natural land continues to be used for other purposes, just at a slowing rate. A slowed rate of deforestation is a good thing, but it is not the same as afforestation (turning cleared land back into natural forest). 
+
+We might speculate that the increasing proportion of soybean used for animal feed indicates a relationship with increased livestock rearing. Livestock require land, so seeing a continued rate of deforestation with large proportions of soybean use being for livestock makes sense to us. We also see, in the soybean use trend, happening in the late 1990s and early 2000s, with the proportion somewhat evening out in recent years. This matches what we see in global deforestation trends as the rate of global deforestation has slowed. 
+
+Overall, we have seen that increased global use of soybeans is related with continued deforestation in Brazil, the world's leading soybean producer (surpassing USA as of May 2021). And an increased proportion of soybeans used for animal feed (vs. those used for human food) is related with continued land conversion (natural land --> human used), albeit at a slower rate.
 
 
 ## Presentation
@@ -284,3 +281,4 @@ Ritchie, H. and Roser, M. 2021, "Forests and Deforestation". Published online at
 8. [Soybean production and use](https://ourworldindata.org/soy)  
 9. [Palm oil production](https://ourworldindata.org/palm-oil) 
 10.[Net Forest Conversion](https://www.clientearth.org/latest/latest-updates/stories/what-is-forest-conversion/)
+11. [Soybean meal](https://urldefense.com/v3/__http://www.nordfeed.com/soybean-meal.html__;!!OToaGQ!6GnIygzAAWSux7dLuDZLpqhNCKurCM7RmXqN4v3G6ZO98IqaT7ipBS9fBz2YqZfUEg$ )
