@@ -20,7 +20,7 @@ Change every 5 years for forest area in conversion.
 |entity                |character | Country |
 |code                  |character | Country code |
 |year                  |double    | Year |
-|net_forest_conversion |double    | Net forest conversion in hectares|
+|net_forest_conversion |double    | Net forest conversion in hectares |
 
 ## forest_area.csv
 
