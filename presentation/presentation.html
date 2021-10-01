@@ -26,11 +26,17 @@ class: center, middle, inverse, title-slide
 
 
 
+class: inverse, middle, center
 
-## Who, What, Why
+# Question One
+### What countries are seeing the most deforestation within their borders, and what is causing this deforestation?
+
+---
+
+## Where, What, Why
 
 --
-### 1. Who is doing the deforesting?
+### 1. Where is the deforesting happening?
 
 --
 
@@ -41,55 +47,46 @@ class: center, middle, inverse, title-slide
 ### 3. Why is the deforestation happening?
 
 ---
-## World Forest Data
 
-&lt;img src="presentation_files/figure-html/total_deforestation_by_country-1.png" width="70%" /&gt;
+## Where
 
-
-
-
----
-## Brazil Forest Loss
-
-&lt;img src="presentation_files/figure-html/cumulative_brazil_only-1.png" width="70%" /&gt;
-
----
-## Causes of Brazil's Deforestation
+&lt;img src="presentation_files/figure-html/total_deforestation_by_country-1.png" title="Brazil is the country seeing the lowest forest conversion" alt="Brazil is the country seeing the lowest forest conversion" width="70%" /&gt;
 
 
-&lt;img src="presentation_files/figure-html/drivers_of_brazil_deforstation-1.png" width="70%" /&gt;
-
----
-## Causes of Brazil's Deforestation
-
-
-&lt;img src="presentation_files/figure-html/proportion_causes-1.png" width="70%" /&gt;
-
----
-## Soybean Use Over Time
-
-&lt;img src="presentation_files/figure-html/soybean_use_continents-1.png" width="70%" /&gt;
 
 
 ---
-## Soybean Use Over Time
+## Where
 
-
-&lt;img src="presentation_files/figure-html/soybean_use_countries-1.png" title="interpretation." alt="interpretation." width="70%" /&gt;
+&lt;img src="presentation_files/figure-html/cumulative_brazil_only-1.png" title="Brazil lost 30m hectares of forest from 2000 to 2013." alt="Brazil lost 30m hectares of forest from 2000 to 2013." width="70%" /&gt;
 
 ---
-## TBD if we include this one
+## What
 
-&lt;img src="presentation_files/figure-html/question_1_plot-1.png" title="interpretation." alt="interpretation." width="70%" /&gt;
+
+&lt;img src="presentation_files/figure-html/drivers_of_brazil_deforstation-1.png" title="Pasture is the most common cause of deforestation in Brazil, " alt="Pasture is the most common cause of deforestation in Brazil, " width="70%" /&gt;
+
+---
+## Why
+
+&lt;img src="presentation_files/figure-html/soybean_use_continents-1.png" title="Asia, South America, North America use the most soybean among continents." alt="Asia, South America, North America use the most soybean among continents." width="70%" /&gt;
+
+
+---
+## Why
+
+
+&lt;img src="presentation_files/figure-html/soybean_use_countries-1.png" title="China, US, Brazil, Argentina identified as countries that use the most soybean." alt="China, US, Brazil, Argentina identified as countries that use the most soybean." width="70%" /&gt;
 
 
 ---
 class: inverse, middle, center
 
 # Question Two
-### How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation development over time?
+### How does the proportion of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation development over time?
 
 ---
+class: inverse, left
 
 ## Analysis Plan
 
@@ -106,7 +103,8 @@ class: inverse, middle, center
 ---
 
 
-## 1. Plot global soybean use share by type of usage
+
+## I. Plot global soybean use share by type of usage
 
 .pull-left[
 - Start by grouping all entries in `soybean_use` by decades. For each decade category, add up the values for all entries under `human_food`, `animal_feed`,  and  `processed`.
@@ -166,16 +164,16 @@ class: inverse, middle, center
 &lt;/table&gt;
 ]
 ---
-## 1. Plot global soybean use share by type of usage
+## I. Plot global soybean use share by type of usage
 
-.pull-left[
-- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1.]
 
-.pull-right[
+- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1.
+
+
 &lt;img src="presentation_files/figure-html/soybean_use_share-1.png" width="70%" style="display: block; margin: auto;" /&gt;
-]
+
 ---
-## 2. Plot the rate of global deforestation 
+## II. Plot the rate of global deforestation 
 
 .pull-left[
 ####Net forest conversion: The net change in forest area (loss and gain) describes the sum of all changes in forest area over a specific period of time (including reductions due to deforestation and disasters, and increases due to afforestation and expansion of forests during the period).
@@ -184,6 +182,7 @@ class: inverse, middle, center
 - Plot percentage of global forest area, `forest_area`, as points in the above graph and connect the dots with a distinguishable line. 
 ]
 
+.pull-right[
 &lt;table&gt;
  &lt;thead&gt;
   &lt;tr&gt;
@@ -226,9 +225,7 @@ class: inverse, middle, center
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-.pull-right[
-&lt;img src="presentation_files/figure-html/global_deforestation_rate-1.png" width="70%" /&gt;
-
+&lt;img src="presentation_files/figure-html/forest_area_table-1.png" width="70%" /&gt;
 ]
 
 ---
@@ -236,103 +233,11 @@ class: inverse, middle, center
 
 
 
----
-
-## Plots
-
-
-
-&lt;img src="presentation_files/figure-html/plot-penguins-1.png" title="Body mass vs. flipper lenght of Palmer Penguins for species Adelie and all the others combined together. There is a relatively strong, positive relationship between the two variables. The Adelie penguins are clustered together but they don't exhibit a different trend than the rest of the penguins." alt="Body mass vs. flipper lenght of Palmer Penguins for species Adelie and all the others combined together. There is a relatively strong, positive relationship between the two variables. The Adelie penguins are clustered together but they don't exhibit a different trend than the rest of the penguins." width="70%" /&gt;
-
----
-
 
 class: inverse, middle, center
 
 # A new section...
 
----
-
-## Tables
-
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
-
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; species &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; island &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; bill_length_mm &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; bill_depth_mm &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; flipper_length_mm &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; body_mass_g &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 39.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 181 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3750 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 39.5 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 17.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 186 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3800 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 40.3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 195 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3250 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 36.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 19.3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 193 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3450 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 39.3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 20.6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3650 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
 
 ---
 
@@ -348,34 +253,6 @@ Or you can also include a full page image. See next slide.
 ---
 
 background-image: url(img/watercolour_sys02_img32_percolate.jpg)
-
----
-
-## Math Expressions
-
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. &amp;#36;\alpha+\beta$ renders `\(\alpha+\beta\)`. You can use the display style with double dollar signs:
-
-```
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-```
-
-`$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$`
-
-Limitations:
-
-1. The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
-
-1. There should not be spaces after the opening `$` or before the closing `$`.
-
-1. Math does not work on the title slide (see [#61](https://github.com/yihui/xaringan/issues/61) for a workaround).
-
----
-
-class: inverse, middle, center
-
-# Wrap up
-
----
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -1,5 +1,5 @@
 ---
-title: Deforestation Over Time
+title: "Is soybean use driving global deforestation?"
 author: by Team 5 Look Alive
 output: github_document
 ---
@@ -15,23 +15,21 @@ Our data comes originally from the UN Food and Agriculture Organization’s Fore
 
 The dataset has 5 elements: `forest`, `forest_area`, `brazil_loss`, `soybean_use`, and `vegetable_oil`. The set `forest` contains the change every 5 years in for forest area in conversion. `forest_area` contains the change in global forest area as a percent of global forest area. `brazil_loss` contains the loss of Brazilian forest due to specific types of deforestation, such as `fire` and `small_scale_clearing`. `soybean_use` contains the soybean production and use by year and by country. Finally, the set `vegetable_oil` contains vegetable oil production by crop type and year.
 
-## What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil's commercial soybean crops?
+## What countries are seeing the most deforestation within their borders, and what is causing this deforestation?
 
 ### Introduction
 
-We want to plot global soybean use over time as compared to Brazil's deforestation (Brazil is the world's leader in soybean export). The datasets we will combine for this plot are `brazil_loss`, `soybean_use` and `forest_area`.
-
-Plan for soybean use over time: create new variable `total_use` that combines `human_food`, `animal_feed`, and `processed` for each observation. Group by `year` to create a dataset with the total global use per year. Plot this as a line chart.
-
-Plan for Brazil's deforestation: Filter Brazil observations from `forest_area` dataset. Plot as a line chart.
+These ideas stuck us as the most essential elements of deforestation, and gaining an understanding of the complexities of deforestation depends on becoming familiar with these concepts.
 
 ### Approach
 
-Based on what we see above, we may want to look at some more specific variables to see if they develop into a more interesting story. The other things we will consider looking at are looking at Brazil's deforestation *specifically due to commercial crops* (which would be `commercial crops` from the `brazil_loss` dataset), and showing which countries are using the most soybean. We also want to look at the differentiation between types of use, how they have developed over time and compared to deforestation, which led us to our second question.
+In this question, we planned on exploring three things: the who, the what, and the why of deforestation. First, we chose to use a line plot to examine trends over time in deforestation. This would allow us to get a rough understanding of how many countries are facing the most deforestation and examine the most deforested country’s data. From here, we could then examine the “what”. To do this, we decided to compare the proportions with an area plot. This gave us the opportunity to showcase which causes are the most impactful in Brazil’s deforestation. Finally, to understand the “why” of deforestation, we selected to examine one of the leading causes of deforestation in Brazil. Using line plots again allowed us to highlight which regions and countries are most influential in driving soybean production globally.
+
+Putting all of these factors together gives us a basic understanding of global deforestation.
 
 ### Analysis
 
-```{r brazil_over_time, echo = FALSE}
+```{r cumulative_brazil_only, echo=F, message = F, fig.alt="Brazil lost 30m hectares of forest from 2000 to 2013."}
 library(tidyverse)
 library(tidymodels)
 library(palmerpenguins)
@@ -60,34 +58,7 @@ brazil_loss <- read.csv("data/brazil_loss.csv")
 vegetable_oil <- read.csv("data/vegetable_oil.csv")
 soybean_use <- read.csv("data/soybean_use.csv")
 
-forest_data <- merge(forest, forest_area, by=c("code", "year"))
-
-world_soybean_use <- soybean_use %>%
-  filter(entity == "World")
-
-world_soybean_total <- world_soybean_use %>%
-  rowwise() %>%
-  mutate(total = sum(human_food, animal_feed, processed))
-
 brazil_loss$total_brazil_forest_loss_hectares = rowSums(brazil_loss[,5:15])
-brazil_loss_soybean_use <- merge(brazil_loss, world_soybean_total, by = c("year")) %>%
-  select(year, total_brazil_forest_loss_hectares, total) %>%
-  mutate(forest_loss_km2 = -(total_brazil_forest_loss_hectares / 100),
-         total_brazil_forest_loss_hectares = - total_brazil_forest_loss_hectares) %>%
-  select(-4)
-
-all_soybean_use <- soybean_use %>%
-  rowwise() %>%
-  mutate(total = sum(human_food, animal_feed, processed, na.rm = T))
-
-soybean_total <- all_soybean_use %>%
-  group_by(year) %>%
-  summarise(world_soybean_use = sum(total, na.rm = T))
-
-brazil_loss_soybean_use <- brazil_loss_soybean_use %>%
-  pivot_longer(!year,
-              names_to = "x1",
-              values_to = "values")
 
 annotation <- data.frame(
    x = c(2010),
@@ -111,7 +82,8 @@ brazil_loss %>% select(year, total_brazil_forest_loss_hectares) %>%
   ggplot() +
   geom_line(aes(year, cum_sum), size = 2, color = "#009739") +
   geom_hline(aes(yintercept = 0), color = "red", size = 2) +
-  labs(title = "Forest loss since 2000 (hectares)", x = "Year", y = NULL) +
+  labs(title = "Brazilian forest loss", subtitle = "2000 to 2013", x = NULL, y = "Hectares",
+       caption = "Fig. 1") +
   scale_y_continuous(labels = label_number_si()) +
   scale_x_continuous() +
   geom_text(data=annotation, aes(x=x, y=y, label=label),
@@ -122,10 +94,11 @@ brazil_loss %>% select(year, total_brazil_forest_loss_hectares) %>%
            size=7 , angle=0, fontface="bold") +
   geom_text(data=annotation3, aes(x=x, y=y, label=label),
            color="black", 
-           size=7 , angle=0)
+           size=7 , angle=0) +
+  scale_x_continuous(breaks = seq(from = 2000, to = 2013, by = 4))
 ```
 
-```{r drivers_of_brazil_deforstation, echo=F, message = F}
+```{r drivers_of_brazil_deforstation, echo=F, message = F, fig.alt = "Pasture is the most common cause of deforestation in Brazil, "}
 brazil_loss_no_total <- read.csv("data/brazil_loss.csv") %>% select(-(1:3))
 brazil_loss_no_total <- brazil_loss_no_total %>%
   pivot_longer(!year,
@@ -135,11 +108,11 @@ brazil_loss_no_total <- brazil_loss_no_total %>%
     cause == "pasture" ~ "Pasture",
     cause == "fire" ~ "Fire",
     cause == "commercial_crops" ~ "Commercial Crops",
-    cause == "selective_logging" ~ "Selective Logging",
+    cause == "selective_logging" ~ "Logging",
     cause == "small_scale_clearing" ~ "Small-Scale Farming",
     T ~ "Other"
   ) %>% 
-  factor(levels=c("Other", 'Pasture', 'Fire', "Selective Logging", "Small-Scale Farming", "Commercial Crops"))) %>%
+  factor(levels=c('Fire', "Logging", "Small-Scale Farming", "Commercial Crops", 'Pasture',"Other"))) %>%
   group_by(cause, year) %>%
   summarise(sum = sum(forest_lost), .groups = 'drop') %>%
   group_by(year, cause) %>%
@@ -147,13 +120,16 @@ brazil_loss_no_total <- brazil_loss_no_total %>%
   mutate(percentage = n / sum(n))
 
 ggplot(brazil_loss_no_total, aes(year, percentage, fill=cause)) + 
-    geom_area() +
-  scale_fill_manual(values = c("#E69F00", "#56B4E9", "#CC79A7", "#999999", "#0072B2", "#D55E00")) +
+    geom_area(alpha = 0.9) +
+  scale_fill_manual(values = c("#E69F00", "#56B4E9", "#CC79A7", "red", "#0072B2", "#D55E00")) +
   scale_y_continuous(labels = scales::percent) +
-  labs(x = "Year", y = NULL, fill = "Cause of Deforestation")
+  labs(x = NULL, y = NULL, title = "Causes of loss of forest in Brazil", fill = NULL,
+       caption = "Fig. 2") +
+  scale_x_continuous(breaks = seq(from = 2000, to = 2013, by = 4)) +
+  theme(legend.position = "bottom")
 ```
 
-```{r soybean_use_countries, echo = FALSE, message=F, fig.alt = "interpretation."}
+```{r soybean_use_countries, echo = FALSE, message=F, fig.alt = "China, US, Brazil, Argentina identified as countries that use the most soybean."}
 soy_use_by_country <- soybean_use %>%
   filter(!is.na(code),
          entity != "World") %>%
@@ -170,16 +146,20 @@ soy_use_by_country %>%
               unhighlighted_params = list(size = 1.2, colour =
                                             alpha("gray", 0.6))) +
   scale_y_continuous(labels = label_number_si()) +
-  labs(y = NULL, x = "Year", title = "Tonnes of soybean used", subtitle = "by country") +
+  labs(y = "Tonnes", x = NULL, title = "Soybean use by country",
+       caption = "Fig. 3") +
   # flagcolorcodes.com
-  scale_color_manual(values = c("#6CACE4", "#009739", "#EE1C25", "#0A3161"))
+  scale_color_manual(values = c("#6CACE4", "#009739", "#EE1C25", "#0A3161")) +
+  scale_x_continuous(breaks = seq(from = 1960, to = 2013, by = 10))
 ```
 
 ### Discussion
 
-(1-3 paragraphs)
-In the Discussion section, interpret the results of your analysis. Identify any trends revealed (or not revealed) by the plots.
-Speculate about why the data looks the way it does.
+Figure 1 portrays the amount of lost forest in Brazil in the span of 13 years, from 2000 to 2013. The loss is striking at over 30 million hectares (300,000 square km, for reference). The figure does show a concave trend, which shows that the loss of forest is not exponential, signaling that there may be hope in a continued flattening of this line of forest loss. It is interesting to consider what factors may have contributed to these trends within Brazil. Lawmaking and leadership will play a role in a country's development, meaning that it would be fascinating to gather this same data from Jair Bolsonaro's current reign as Brazil's president and compare it to the trends under Brazilian presidents who led during the time period of this plot, such as Lula de Silva, who served as president from 2003-2010 in Brazil (Wikipedia, Brazilian Presidents).
+
+Figure 2 offers a view of the causes of Brazilian loss of forest. The most common reason for removal of forest in Brazil is to clear space for land to be used as pasture. Other big causes of loss of forest include fire, logging, small-scale farming, and commercial crops. Fires fluctuate wildly on the plot, demonstrating their lack of predictability and their destructive nature. Global warming and human activity may be factors that contributes to the increased danger of forest fires in the Amazon (Bush et. al. 2008). One important commercial crop is soybean, which we chose to analyze further, guided by our retrieval of data on soybean use.
+
+Figure 3 gives a look into which countries are the largest consumers of soybean, which in turn increases demand for soybean and drives deforestation. China, the United States, Brazil, and Argentina were found to be the most prevalent soybean consumers. Argentina was the most surprising to us, but we found that soybean is a vital crop to Argentina, which incentivizes the use of soybean after its growth (croplife, Soybeans in Argentina).
 
 ## How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation?
 
@@ -214,10 +194,17 @@ Our presentation can be found [here](presentation/presentation.html).
 
 ## Data 
 
-Include a citation for your data here. 
-See http://libraryguides.vu.edu.au/c.php?g=386501&p=4347840 for guidance on proper citation for datasets. 
-If you got your data off the web, make sure to note the retrieval date.
+Ritchie, H. and Roser, M. 2021, "Forests and Deforestation". Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/forests-and-deforestation' on September 13, 2021 [Online Resource]
 
 ## References
 
-List any references here. You should, at a minimum, list your data source.
+1. [Brazilian Presidents](https://en.wikipedia.org/wiki/List_of_presidents_of_Brazil)
+2. Bush, M. B., Silman, M. R., McMichael, C., & Saatchi, S. (2008). Fire, climate change and biodiversity in Amazonia: a Late-Holocene perspective. Philosophical transactions of the Royal Society of London. Series B, Biological sciences, 363(1498), 1795–1802. https://doi.org/10.1098/rstb.2007.0014
+3. [Soybeans in Argentina](https://croplife.org/news-views/sharing-the-story/soybeans-from-argentina/#:~:text=The%20country%20grew%2020%20million,cereal%2C%20automotive%20and%20petrochemical%20exports.&text=The%20health%20of%20the%20soybean,therefore%2C%20of%20great%20national%20interest.)
+3. [Our World in Data](https://ourworldindata.org/forests-and-deforestation)
+4. [Deforestation](https://ourworldindata.org/deforestation)  
+5. [Share of forest area](https://ourworldindata.org/forest-area)  
+6. [Drivers of deforestation](https://ourworldindata.org/drivers-of-deforestation)  
+7. [Deforestation by commodity](https://ourworldindata.org/grapher/deforestation-by-commodity)  
+8. [Soybean production and use](https://ourworldindata.org/soy)  
+9. [Palm oil production](https://ourworldindata.org/palm-oil) 
