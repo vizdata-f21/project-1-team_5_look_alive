@@ -293,9 +293,7 @@ data2 <-soybean_use %>%
 - Start by grouping all entries in `soybean_use` by decades. For each decade category, add up the values for all entries under `human_food`, `animal_feed`,  and  `processed`.
 
 - Create new variables `prop` that represents the proportions of soybean production used for human food and for animal feed out of the total each decade.
-
-- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1.]
-
+]
 .pull-right[
 ```{r data2_table, echo = FALSE, fig.align='center'}
 kable(head(data2), format = "html")
@@ -304,11 +302,7 @@ kable(head(data2), format = "html")
 ---
 ## I. Plot global soybean use share by type of usage
 
-
-- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1.
-
-
-```{r soybean_use_share, echo = FALSE, message = FALSE, fig.align='center'}
+```{r soybean_use_share, echo = FALSE, message = FALSE, fig.align='center', out.width = "63%"}
 
 ggplot(data2, aes(fill = use, y = prop, x = year)) + 
   dark_theme_light() +  
@@ -337,27 +331,25 @@ ggplot(data2, aes(fill = use, y = prop, x = year)) +
 
 ```
 
+- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1
+
 ---
 ## II. Plot the rate of global deforestation 
 
 .pull-left[
-####Net forest conversion: The net change in forest area (loss and gain) describes the sum of all changes in forest area over a specific period of time (including reductions due to deforestation and disasters, and increases due to afforestation and expansion of forests during the period).
+#### Net forest conversion: The net change in forest area (loss and gain) describes the sum of all changes in forest area over a specific period of time (including reductions due to deforestation and disasters, and increases due to afforestation and expansion of forests during the period).
 
 - Calculate share of global forest area by year
 - Plot percentage of global forest area, `forest_area`, as points in the above graph and connect the dots with a distinguishable line. 
 ]
 
 .pull-right[
-```{r forest_area_table, echo = F, message = F}
+```{r forest_area_table, echo = F, message = F, out.width = "80%"}
 forest2 <- forest %>%
   filter(entity == "World")
-  
-kable(head(forest2), format = "html")
 
-ggplot(data = forest2) + 
-  geom_area(aes(year, net_forest_conversion, color = entity), size = 1.5, fill = "lightgray", alpha = 0.5) +
-
-  scale_y_continuous(labels = label_number_si()) +
+ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) + 
+  geom_area(aes(color = entity), size = 2.5, fill= "lightgray", alpha = 0.5) +
   scale_color_manual(values = c("burlywood4")) +
   scale_y_reverse() +
 
@@ -365,13 +357,69 @@ ggplot(data = forest2) +
   labs(title = "Global Net Forest Conversion (hectares)", x = "Year", y = NULL) +
   
   theme(legend.position = "none",
-        plot.title = element_text(face = 'bold',size = 15),
-        axis.title.x = element_text(size = 13),
-        axis.title.y = element_text(size = 10),
-        axis.text.x = element_text( size = 9,face = "bold"),
-        axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 9, face = "bold"))
+        plot.title = element_text(face = 'bold',size = 17),
+        axis.title.x = element_text(size = 16),
+        axis.text.x = element_text( size = 13,face = "bold"),
+        axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 13, face = "bold"))
+```
+
+```{r forest_table, echo = FALSE, out.width = "50%"}
+kable(head(forest2), format = "html")
 ```
 ]
+---
+## III. Compare
+
+.pull-left[
+```{r compare, echo = FALSE, message = FALSE, out.width = "300%", out.height= "300%"}
+
+ggplot(data2, aes(fill = use, y = prop, x = year)) + 
+  geom_bar(position ="fill", stat ="identity") +
+  
+  scale_x_continuous (name = "Year",
+                     breaks = seq(from = 1961, to = 2013, by = 10)) +
+  scale_y_continuous(name = "Proportion",
+                     labels = c("0%", "25%", "50%","75%","100%")) +
+  scale_fill_manual(values = c("orangered4", "goldenrod1"), 
+                    name = NULL, labels = c("Animal food", "Human food")) +
+  
+  labs(title = "Global soybean production and use share between 1961-2013",
+       subtitle = "By types of usage") +
+  
+  theme(plot.title = element_text(face = 'bold',size = 13),
+        plot.subtitle = element_text( size = 12),
+        legend.position = "bottom",
+        legend.key.size = unit(.5, "cm"),
+        legend.text = element_text(size = 10),
+        legend.box.spacing = unit(0.2, "cm"),
+        axis.title.x = element_text(size = 10),
+        axis.title.y = element_text(size = 10),
+        axis.text.x = element_text( size = 7,face = "bold"),
+        axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 7, face = "bold"))
+```
+]
+
+.pull-right[
+```{r observe, echo = F, message = F, out.width = "200%"}
+forest2 <- forest %>%
+  filter(entity == "World")
+
+ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) + 
+  geom_area(aes(color = entity), size = 2.5, fill= "lightgray", alpha = 0.5) +
+  scale_color_manual(values = c("burlywood4")) +
+  scale_y_reverse() +
+
+  
+  labs(title = "Global Net Forest Conversion (hectares)", x = "Year", y = NULL) +
+  
+  theme(legend.position = "none",
+        plot.title = element_text(face = 'bold',size = 17),
+        axis.title.x = element_text(size = 16),
+        axis.text.x = element_text( size = 13,face = "bold"),
+        axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 13, face = "bold"))
+```
+]
+
 
 ---
 
@@ -381,25 +429,9 @@ style_xaringan(
 )
 ```
 
-
-
 class: inverse, middle, center
 
 # A new section...
 
-
----
-
-## Images
-
-```{r castle, echo = FALSE, out.width = "40%", fig.align = "center", fig.cap = "Image credit: Danielle Navarro, Percolate."}
-include_graphics("img/watercolour_sys02_img32_percolate.jpg")
-```
-
-Or you can also include a full page image. See next slide.
-
----
-
-background-image: url(img/watercolour_sys02_img32_percolate.jpg)
 
 
