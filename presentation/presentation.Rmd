@@ -64,6 +64,8 @@ include_graphics("img/deforestation_road.jpeg")
 
 ---
 
+class: inverse, middle, center
+
 # Question One
 ### What countries are seeing the most deforestation within their borders, and what is causing this deforestation?
 
@@ -88,19 +90,19 @@ include_graphics("img/deforestation_road.jpeg")
 
 ```{r total_deforestation_by_country, echo=F, message=F, fig.alt="Brazil is the country seeing the lowest forest conversion"}
 annotation4 <- data.frame(
-   x = c(2010),
-   y = c(-4500000),
+   x = c(1996.5),
+   y = c(-1600000),
    label = c("1 Hectare = ")
 )
 annotation5 <- data.frame(
-   x = c(2010),
-   y = c(-4000000),
-   label = c("10k meters sq =")
+   x = c(1996.5),
+   y = c(-2300000),
+   label = c("10k sq meters =")
 )
 annotation6 <- data.frame(
-   x = c(2010),
-   y = c(-3500000),
-   label = c("about 2.5 football feilds")
+   x = c(1996.5),
+   y = c(-3000000),
+   label = c("about 2.5 football fields")
 )
 
 
@@ -114,19 +116,18 @@ forest %>%
                                             alpha("gray", 0.6))) +
   geom_hline(aes(yintercept = 0), color = "red", size = 2) +
   scale_y_continuous(labels = label_number_si()) +
-  labs(title = "Net forest loss by country", x = NULL, y = "Hectares") +
+  labs(title = "Net forest conversion by country", x = NULL, y = "Hectares") +
   scale_color_manual(values = c("#009739")) +
   scale_x_continuous(breaks = seq(from = 1990, to = 2015, by = 5)) +
-  scale_y_reverse(labels = unit_format(unit = "M", scale = -1e-6)) +
   geom_text(data=annotation4, aes(x=x, y=y, label=label),
            color="black", 
-           size=3, angle=0) +
+           size=5, angle=0) +
   geom_text(data=annotation5, aes(x=x, y=y, label=label),
            color="black", 
-           size=3, angle=0) +
+           size=5, angle=0) +
   geom_text(data=annotation6, aes(x=x, y=y, label=label),
            color="black", 
-           size=3, angle=0)
+           size=5, angle=0) +
   theme(panel.grid.minor.x = element_blank())
 ```
 
@@ -372,7 +373,12 @@ ggplot(data2, aes(fill = use, y = prop, x = year))  +
 forest2 <- forest %>%
   filter(entity == "World")
 
-kable(head(forest2), format = "html")
+forest3 <- forest2 %>%
+  select(entity, year, net_forest_conversion) %>%
+  mutate(net_forest_conversion = formatC(net_forest_conversion, format = "d", big.mark = ","))
+colnames(forest3) <- c("Region", "Year", "Net Forest Conversion")
+
+kable(head(forest3), format = "html")
 
 # https://www.clientearth.org/latest/latest-updates/stories/what-is-forest-conversion/
 ```
@@ -383,7 +389,7 @@ kable(head(forest2), format = "html")
 ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) + 
   geom_area(aes(color = entity), size = 2.5, fill= "lightgray", alpha = 0.5) +
   scale_color_manual(values = c("burlywood4")) +
-#  scale_y_reverse() +
+  scale_y_continuous(labels = label_number_si()) +
 
   
   labs(title = "Global Net Forest Conversion (hectares)", x = "Year", y = NULL) +
@@ -437,7 +443,7 @@ forest2 <- forest %>%
 ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) + 
   geom_area(aes(color = entity), size = 2.5, fill= "lightgray", alpha = 0.5) +
   scale_color_manual(values = c("burlywood4")) +
-  scale_y_reverse() +
+  scale_y_continuous(labels = label_number_si()) +
 
   
   labs(title = "Global Net Forest Conversion (hectares)", x = "Year", y = NULL) +
