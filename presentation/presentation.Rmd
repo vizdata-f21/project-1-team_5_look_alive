@@ -73,7 +73,7 @@ class: inverse, middle, center
 
 ---
 
-## Where
+## The 'Where'
 
 ```{r total_deforestation_by_country, echo=F, message=F, fig.alt="Brazil is the country seeing the lowest forest conversion"}
 forest %>% 
@@ -124,7 +124,7 @@ brazil_loss_soybean_use <- brazil_loss_soybean_use %>%
 ```
 
 ---
-## Where
+## The 'Where'
 
 ```{r cumulative_brazil_only, echo=F, message = F, fig.alt="Brazil lost 30m hectares of forest from 2000 to 2013."}
 annotation <- data.frame(
@@ -165,7 +165,7 @@ brazil_loss %>% select(year, total_brazil_forest_loss_hectares) %>%
 ```
 
 ---
-## What
+## The 'What'
 
 
 ```{r drivers_of_brazil_deforstation, echo=F, message = F, fig.alt = "Pasture is the most common cause of deforestation in Brazil, "}
@@ -199,7 +199,7 @@ ggplot(brazil_loss_no_total, aes(year, percentage, fill=cause)) +
 ```
 
 ---
-## Why
+## The 'Why'
 
 ```{r soybean_use_continents, echo=F, message=F, warning=F, fig.alt = "Asia, South America, North America use the most soybean among continents."}
 soy_use_by_continent <- soybean_use %>%
@@ -222,7 +222,7 @@ soy_use_by_continent %>%
 
 
 ---
-## Why
+## The 'Why'
 
 
 ```{r soybean_use_countries, echo = FALSE, message=F, fig.alt = "China, US, Brazil, Argentina identified as countries that use the most soybean."}

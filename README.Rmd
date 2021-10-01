@@ -62,17 +62,17 @@ brazil_loss$total_brazil_forest_loss_hectares = rowSums(brazil_loss[,5:15])
 
 annotation <- data.frame(
    x = c(2010),
-   y = c(-5000000),
+   y = c(-7000000),
    label = c("Brazil has lost")
 )
 annotation2 <- data.frame(
    x = c(2010),
-   y = c(-10200000),
+   y = c(-10400000),
    label = c("over 30 million")
 )
 annotation3 <- data.frame(
    x = c(2010),
-   y = c(-18000000),
+   y = c(-16000000),
    label = c("hectares of forest\nsince 2000")
 )
 
