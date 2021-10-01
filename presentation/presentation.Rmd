@@ -403,7 +403,7 @@ ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) +
 
 ]
 ---
-## III. Compare
+## What is the relationship between type of soybean use and deforestation trends?
 
 .pull-left[
 ```{r compare, echo = FALSE, message = FALSE, warning = F, out.width = "500%", out.height= "500%"}
