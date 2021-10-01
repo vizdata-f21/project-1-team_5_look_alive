@@ -50,13 +50,46 @@ soybean_use <- read.csv("../data/soybean_use.csv")
 ```
 
 
-class: inverse, middle, center
+## Who, What, Why
 
+--
+### 1. Who is doing the deforesting?
+
+<<<<<<< HEAD
 # Question One
 ### What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil’s commercial soybean crops?
 
 ---
 ## Code for Q1
+=======
+--
+
+### 2. What is driving the deforestation?
+
+--
+
+### 3. Why is the deforestation happening?
+
+---
+## World Forest Data
+
+```{r total_deforestation_by_country, echo=F, message=F}
+
+forest %>% 
+  filter(!is.na(code),
+         entity != "World") %>%
+  ggplot() +
+  geom_line(aes(year, net_forest_conversion, color = entity), size = 3) +
+  gghighlight(min(-(net_forest_conversion)), max_highlight = 1,
+              unhighlighted_params = list(size = 1.2, colour =
+                                            alpha("gray", 0.6))) +
+  geom_hline(aes(yintercept = 0), color = "red", size = 2) +
+  scale_y_continuous(labels = label_number_si()) +
+  labs(title = "Net Forest Conversion (hectares)", x = "Year", y = NULL) +
+  scale_color_manual(values = c("#009739"))
+```
+
+>>>>>>> 21bf7f41ee57dd28727a934f7175ee61e7c5639a
 
 ```{r question_1_code}
 forest_data <- merge(forest, forest_area, by=c("code", "year"))
@@ -89,6 +122,139 @@ brazil_loss_soybean_use <- brazil_loss_soybean_use %>%
 ```
 
 ---
+<<<<<<< HEAD
+=======
+## Brazil Forest Loss
+
+```{r cumulative_brazil_only, echo=F}
+annotation <- data.frame(
+   x = c(2010),
+   y = c(-5000000),
+   label = c("Brazil has lost")
+)
+annotation2 <- data.frame(
+   x = c(2010),
+   y = c(-10200000),
+   label = c("over 30 million")
+)
+annotation3 <- data.frame(
+   x = c(2010),
+   y = c(-18000000),
+   label = c("hectares of forest\nsince 2000")
+)
+
+brazil_loss %>% select(year, total_brazil_forest_loss_hectares) %>%
+  add_row(year = 2000, total_brazil_forest_loss_hectares = 0, .before = 1) %>%
+  mutate(cum_sum = -(cumsum(total_brazil_forest_loss_hectares))) %>%
+  ggplot() +
+  geom_line(aes(year, cum_sum), size = 2, color = "#009739") +
+  geom_hline(aes(yintercept = 0), color = "red", size = 2) +
+  labs(title = "Forest loss since 2000 (hectares)", x = "Year", y = NULL) +
+  scale_y_continuous(labels = label_number_si()) +
+  scale_x_continuous() +
+  geom_text(data=annotation, aes(x=x, y=y, label=label),
+           color="black", 
+           size=7 , angle=0) +
+  geom_text(data=annotation2, aes(x=x, y=y, label=label),
+           color="red", 
+           size=7 , angle=0, fontface="bold") +
+  geom_text(data=annotation3, aes(x=x, y=y, label=label),
+           color="black", 
+           size=7 , angle=0)
+```
+
+---
+## Causes of Brazil's Deforestation
+
+
+```{r drivers_of_brazil_deforstation, echo=F}
+brazil_loss_no_total <- read.csv("../data/brazil_loss.csv") %>% select(-(1:3))
+brazil_loss_no_total <- brazil_loss_no_total %>%
+  pivot_longer(!year,
+               names_to = "cause",
+               values_to = "forest_lost") %>%
+  mutate(cause = case_when(
+    cause == "pasture" ~ "Pasture",
+    cause == "fire" ~ "Fire",
+    cause == "commercial_crops" ~ "Commercial Crops",
+    cause == "selective_logging" ~ "Selective Logging",
+    cause == "small_scale_clearing" ~ "Small-scale Farming",
+    T ~ "Other"
+  )) %>%
+  group_by(cause, year) %>%
+  summarise(sum = sum(forest_lost), .groups = 'drop')
+
+ggplot(brazil_loss_no_total, aes(year, sum, fill = cause)) +
+  geom_area() +
+  scale_fill_manual(values = c("#E69F00", "#56B4E9", "#CC79A7", "#999999", "#0072B2", "#D55E00"))
+```
+
+---
+## Causes of Brazil's Deforestation
+
+
+```{r proportion_causes, echo=FALSE, message=F}
+#https://www.r-graph-gallery.com/136-stacked-area-chart
+brazil_loss_no_total  %>%
+  group_by(year, cause) %>%
+  summarise(n = sum(sum)) %>%
+  mutate(percentage = n / sum(n)) %>%
+  ggplot(aes(year, percentage, fill=cause)) + 
+    geom_area() +
+  scale_fill_manual(values = c("#E69F00", "#56B4E9", "#CC79A7", "#999999", "#0072B2", "#D55E00"))
+```
+
+---
+## Soybean Use Over Time
+
+```{r soybean_use_continents, echo=F, message=F, warning=F}
+soy_use_by_continent <- soybean_use %>%
+  filter(entity %in% c('Northern America', 'South America', 'Asia', 'Africa', 'Oceania', 'Europe')) %>%
+  mutate(entity = if_else(entity == "Northern America", "North America", entity)) %>%
+  rowwise() %>%
+  mutate(total = sum(human_food, animal_feed, processed, na.rm = T))
+
+soy_use_by_continent %>%
+  ggplot(aes(x = year, y = total, color = entity)) +
+  geom_line(show.legend = F, size = 2) +
+  gghighlight(max(total), max_highlight = 3, label_params = list(size = 3),
+              unhighlighted_params = list(size = 1.2, colour =
+                                            alpha("gray", 0.6))) +
+  scale_y_continuous(labels = label_number_si()) +
+  labs(y=NULL, x = "Year", title = "Tonnes of soybean used", subtitle = "by continent") +
+  # okabe ito colors
+  scale_color_manual(values = c("#E69F00", "#56B4E9", "#009E73"))
+```
+
+
+---
+## Soybean Use Over Time
+
+
+```{r soybean_use_countries, echo = FALSE, message=F, fig.alt = "interpretation."}
+soy_use_by_country <- soybean_use %>%
+  filter(!is.na(code),
+         entity != "World") %>%
+  rowwise() %>%
+  mutate(total = sum(human_food, animal_feed, processed, na.rm = T))
+
+# https://stackoverflow.com/questions/49438953/selective-labeling-for-ggplot-lines
+# https://cran.r-project.org/web/packages/gghighlight/vignettes/gghighlight.html
+
+soy_use_by_country %>%
+  ggplot(aes(x = year, y = total, color = entity)) +
+  geom_line(show.legend = F, size = 2) +
+  gghighlight(max(total), max_highlight = 4,
+              unhighlighted_params = list(size = 1.2, colour =
+                                            alpha("gray", 0.6))) +
+  scale_y_continuous(labels = label_number_si()) +
+  labs(y = NULL, x = "Year", title = "Tonnes of soybean used", subtitle = "by country") +
+  # flagcolorcodes.com
+  scale_color_manual(values = c("#6CACE4", "#009739", "#EE1C25", "#0A3161"))
+```
+
+---
+>>>>>>> 21bf7f41ee57dd28727a934f7175ee61e7c5639a
 ## Plot for Q1
 
 ```{r question_1_plot, echo = FALSE, warning = FALSE, fig.alt = "interpretation."}
