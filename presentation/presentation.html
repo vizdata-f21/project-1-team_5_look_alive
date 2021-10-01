@@ -85,7 +85,7 @@ class: inverse, left
 class: inverse, middle, center
 
 # Question Two
-### How does the proportions of soybean production used for human food versus for feeding animal change over time? Is this change in proportions related to global deforestation development over time?
+## Soy vs Meat
 
 ---
 class: inverse, left
@@ -94,11 +94,12 @@ class: inverse, left
 
 --
 ### 1. Plot global soybean use share by type of usage
+####How does the proportions of soybean production used for human food versus for feeding animal change over time?
 
 --
 
 ### 2. Plot the rate of global deforestation during the same time period
-
+#### Is this change in proportions related to global deforestation development over time?
 --
 
 ### 3. Observe and Compare
@@ -106,82 +107,19 @@ class: inverse, left
 
 
 
-## I. Plot global soybean use share by type of usage
 
-.pull-left[
-- Start by grouping all entries in `soybean_use` by decades. For each decade category, add up the values for all entries under `human_food`, `animal_feed`,  and  `processed`.
+## I.  Soybean Production Share
 
-- Create new variables `prop` that represents the proportions of soybean production used for human food and for animal feed out of the total each decade.
-]
-.pull-right[
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
-   &lt;th style="text-align:left;"&gt; use &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; amount &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; prop &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1961 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; total_human &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 16994000 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.9187436 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1961 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; total_animal &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1503000 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0812564 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1962 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; total_human &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 17326000 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.9058873 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1962 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; total_animal &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1800000 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0941127 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1963 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; total_human &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18667000 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.9006127 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:right;"&gt; 1963 &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; total_animal &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2060000 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0.0993873 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-]
----
-## I. Plot global soybean use share by type of usage
+&lt;img src="presentation_files/figure-html/soybean_use_share-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 
-&lt;img src="presentation_files/figure-html/soybean_use_share-1.png" width="63%" style="display: block; margin: auto;" /&gt;
 
-- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1
 
 ---
 ## II. Plot the rate of global deforestation 
 
 .pull-left[
-#### Net forest conversion: The net change in forest area (loss and gain) describes the sum of all changes in forest area over a specific period of time (including reductions due to deforestation and disasters, and increases due to afforestation and expansion of forests during the period).
+#### Net forest conversion: The net change in forest area (loss and gain) describes the sum of all changes in forest area over a specific period of time (including reductions due to deforestation and disasters, and increases due to afforestation and expansion of forests during the period). 
 
-- Calculate share of global forest area by year
-- Plot percentage of global forest area, `forest_area`, as points in the above graph and connect the dots with a distinguishable line. 
-]
-
-.pull-right[
-&lt;img src="presentation_files/figure-html/forest_area_table-1.png" width="80%" /&gt;
 
 &lt;table&gt;
  &lt;thead&gt;
@@ -225,25 +163,23 @@ class: inverse, left
 &lt;/tbody&gt;
 &lt;/table&gt;
 ]
+
+.pull-right[
+&lt;img src="presentation_files/figure-html/forest_area_table-1.png" width="140%" /&gt;
+
+]
 ---
 ## III. Compare
 
 .pull-left[
-&lt;img src="presentation_files/figure-html/compare-1.png" width="300%" height="300%" /&gt;
+&lt;img src="presentation_files/figure-html/compare-1.png" width="500%" height="500%" /&gt;
 ]
 
 .pull-right[
 &lt;img src="presentation_files/figure-html/observe-1.png" width="200%" /&gt;
 ]
 
-
----
-
-
-
-class: inverse, middle, center
-
-# A new section...
+#### The net loss in global forest area to use land for another purpose (i.e. creating pasture for cattle) matches the pattern of increase in soybean use shared by animals.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
