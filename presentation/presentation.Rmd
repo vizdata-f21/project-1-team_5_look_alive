@@ -458,6 +458,12 @@ style_xaringan(
 )
 ```
 
+---
 
+#Conclusion
+
+- Increased global use of soybeans is correlated with increased deforestation in Brazil, the world's leading soybean producer (surpassing USA as of May 2021)
+
+- Increased proportion of soybeans used for animal feed (as compared to human) is correlated with continued land conversion (natural land --> human used), albeit at a slower rate, potentially for increased livestock rearing. 
 
 
