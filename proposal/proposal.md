@@ -20,11 +20,11 @@ The dataset has 5 elements: `forest`, `forest_area`, `brazil_loss`,
 `soybean_use`, and `vegetable_oil`. The set `forest` contains the change
 every 5 years in for forest area in conversion. It comes originally from
 the UN Food and Agriculture Organization’s Forest Resources Assessment.
-“Since year-to-year changes in forest cover can be volatile, the UN FAO
-provide this annual data averaged over five-year periods.” `forest_area`
-contains the change in global forest area as a percent of global forest
-area. `brazil_loss` contains the loss of Brazilian forest due to
-specific types of deforestation, such as `fire` and
+“Since year-to-year changes in forest cover can be volatile, the UN
+FAO provide this annual data averaged over five-year periods.”
+`forest_area` contains the change in global forest area as a percent of
+global forest area. `brazil_loss` contains the loss of Brazilian forest
+due to specific types of deforestation, such as `fire` and
 `small_scale_clearing`. `soybean_use` contains the soybean production
 and use by year and by country. Finally, the set `vegetable_oil`
 contains vegetable oil production by crop type and year.
