@@ -27,23 +27,10 @@ class: center, middle, inverse, title-slide
 
 
 
-## Who, What, Why
+class: inverse, middle, center
 
---
-### 1. Who is doing the deforesting?
-
---
-
-### 2. What is driving the deforestation?
-
---
-
-<<<<<<< HEAD
 # Question One
 ### What is the relationship between global soybean use and deforestation in Brazil? What countries are driving the growing of Brazil’s commercial soybean crops?
-=======
-### 3. Why is the deforestation happening?
->>>>>>> 21bf7f41ee57dd28727a934f7175ee61e7c5639a
 
 ---
 ## Code for Q1
@@ -59,35 +46,11 @@ world_soybean_total &lt;- world_soybean_use %&gt;%
   rowwise() %&gt;%
   mutate(total = sum(human_food, animal_feed, processed))
 
-<<<<<<< HEAD
 brazil_loss$total_brazil_forest_loss_hectares = rowSums(brazil_loss[,5:15])
 brazil_loss_soybean_use &lt;- merge(brazil_loss, world_soybean_total, by = c("year")) %&gt;%
   select(year, total_brazil_forest_loss_hectares, total) %&gt;%
   mutate(forest_loss_km2 = total / 100) %&gt;%
   select(-4)
-=======
----
-## Brazil Forest Loss
-
-&lt;img src="presentation_files/figure-html/cumulative_brazil_only-1.png" width="70%" /&gt;
-
----
-## Causes of Brazil's Deforestation
-
-
-&lt;img src="presentation_files/figure-html/drivers_of_brazil_deforstation-1.png" width="70%" /&gt;
-
----
-## Causes of Brazil's Deforestation
-
-
-&lt;img src="presentation_files/figure-html/proportion_causes-1.png" width="70%" /&gt;
-
----
-## Soybean Use Over Time
-
-&lt;img src="presentation_files/figure-html/soybean_use_continents-1.png" width="70%" /&gt;
->>>>>>> 21bf7f41ee57dd28727a934f7175ee61e7c5639a
 
 all_soybean_use &lt;- soybean_use %&gt;%
   rowwise() %&gt;%
@@ -97,15 +60,11 @@ soybean_total &lt;- all_soybean_use %&gt;%
   group_by(year) %&gt;%
   summarise(world_soybean_use = sum(total, na.rm = T))
 
-<<<<<<< HEAD
 brazil_loss_soybean_use &lt;- brazil_loss_soybean_use %&gt;%
   pivot_longer(!year,
               names_to = "x1",
               values_to = "values")
 ```
-=======
-&lt;img src="presentation_files/figure-html/soybean_use_countries-1.png" title="interpretation." alt="interpretation." width="70%" /&gt;
->>>>>>> 21bf7f41ee57dd28727a934f7175ee61e7c5639a
 
 ---
 ## Plot for Q1
@@ -121,7 +80,7 @@ class: inverse, middle, center
 
 ---
 
-## Plan
+## Analysis Plan
 
 --
 ### 1. Plot global soybean use share by type of usage
@@ -196,12 +155,14 @@ class: inverse, middle, center
 &lt;/table&gt;
 ]
 ---
+## 1. Plot global soybean use share by type of usage
 
-## Plot 1
-.center[
-&lt;img src="presentation_files/figure-html/soybean_share_by_usage-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+.pull-left[
+- Plot `prop` filled by the type of use in a stacked bar graph where the x-axis represents `decade` and the y-axis represents proportion percentage between 0 to 1.]
+
+.pull-right[
+&lt;img src="presentation_files/figure-html/soybean_use_share-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 ]
-
 ---
 ## 2. Plot the rate of global deforestation 
 
