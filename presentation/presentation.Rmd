@@ -324,7 +324,7 @@ ggplot(data2, aes(fill = use, y = prop, x = year)) +
 ```
 
 ---
-## 2. Plot the rate of global deforestation 
+## II. Plot the rate of global deforestation 
 
 .pull-left[
 ####Net forest conversion: The net change in forest area (loss and gain) describes the sum of all changes in forest area over a specific period of time (including reductions due to deforestation and disasters, and increases due to afforestation and expansion of forests during the period).
@@ -333,40 +333,31 @@ ggplot(data2, aes(fill = use, y = prop, x = year)) +
 - Plot percentage of global forest area, `forest_area`, as points in the above graph and connect the dots with a distinguishable line. 
 ]
 
-```{r forest_area__code, echo = FALSE }
+.pull-right[
+```{r forest_area_table, echo = F, message = F}
 forest2 <- forest %>%
   filter(entity == "World")
   
 kable(head(forest2), format = "html")
-```
 
-.pull-right[
-```{r global_deforestation_rate, echo = FALSE}
-ggplot(data=forest2, aes(x = year, y=net_forest_conversion, group = 1)) +
-  geom_line()
-```
+ggplot(data = forest2) + 
+  geom_area(aes(year, net_forest_conversion, color = entity), size = 1.5, fill = "lightgray", alpha = 0.5) +
 
-]
-
----
-
-## World Forest Data
-
-```{r total_deforestation_by_country, echo=F, message=F}
-
-forest %>% 
-  filter(!is.na(code),
-         entity != "World") %>%
-  ggplot() +
-  geom_line(aes(year, net_forest_conversion, color = entity), size = 3) +
-  gghighlight(min(-(net_forest_conversion)), max_highlight = 1,
-              unhighlighted_params = list(size = 1.2, colour =
-                                            alpha("gray", 0.6))) +
-  geom_hline(aes(yintercept = 0), color = "red", size = 2) +
   scale_y_continuous(labels = label_number_si()) +
-  labs(title = "Net Forest Conversion (hectares)", x = "Year", y = NULL) +
-  scale_color_manual(values = c("#009739"))
+  scale_color_manual(values = c("burlywood4")) +
+  scale_y_reverse() +
+
+  
+  labs(title = "Global Net Forest Conversion (hectares)", x = "Year", y = NULL) +
+  
+  theme(legend.position = "none",
+        plot.title = element_text(face = 'bold',size = 15),
+        axis.title.x = element_text(size = 13),
+        axis.title.y = element_text(size = 10),
+        axis.text.x = element_text( size = 9,face = "bold"),
+        axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 9, face = "bold"))
 ```
+]
 
 ---
 
@@ -377,7 +368,6 @@ style_xaringan(
 ```
 
 
----
 
 class: inverse, middle, center
 
