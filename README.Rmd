@@ -4,7 +4,7 @@ author: by Team 5 Look Alive
 output: github_document
 ---
 
-```{r load-packages, echo = FALSE, message = F, warning = F}
+```{r load-packages, message = F, warning = F}
 library(tidyverse)
 library(tidymodels)
 library(palmerpenguins)
@@ -14,7 +14,7 @@ library(ggdark)
 library(scales)
 library(viridis)
 library(gghighlight)
-knitr::opts_chunk$set(echo = F)
+knitr::opts_chunk$set(echo = T)
 ```
 
 
