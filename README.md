@@ -68,18 +68,6 @@ global deforestation.
 #### Figure 1
 
 ``` r
-# set default theme for ggplot2
-ggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))
-
-# For better figure resolution
-knitr::opts_chunk$set(
-  fig.retina = 3, 
-  dpi = 300, 
-  fig.width = 6, 
-  fig.asp = 0.618, 
-  out.width = "70%"
-  )
-
 # these relabel col 1 but we don't care bc it's meaningless
 forest <- read_csv("data/forest.csv")
 forest_area <- read_csv("data/forest_area.csv")
@@ -118,8 +106,8 @@ brazil_loss <- brazil_loss %>%
 ggplot(brazil_loss) +
   geom_line(aes(year, cum_sum), size = 2, color = "#009739") +
   geom_bar(aes(year, -total_brazil_forest_loss_hectares), stat="identity") +
-  geom_hline(aes(yintercept = 0), color = "red", size = 1.5) +
-  labs(title = "Cumulative Brazilian forest loss", subtitle = "2000 to 2013", x = NULL, y = "Hectares") +
+  geom_hline(aes(yintercept = 0), color = "black", size = 1.5) +
+  labs(title = "Cumulative Brazilian forest loss", subtitle = "2000 to 2013", x = NULL, y = "Hectares", caption = "Fig. 1") +
   scale_y_continuous(labels = label_number_si()) +
   scale_x_continuous() +
   geom_text(data=annotation, aes(x=x, y=y, label=label),
@@ -162,15 +150,16 @@ brazil_loss_no_total <- brazil_loss_no_total %>%
 
 ggplot(brazil_loss_no_total, aes(year, percentage, fill=cause)) + 
     geom_area(alpha = 0.9) +
-  scale_fill_manual(values = c("#E69F00", "#56B4E9", "#CC79A7", "red", "#0072B2", "#D55E00")) +
+  scale_fill_manual(values = c("#E69F00", "#56B4E9", "#CC79A7", "black", "#0072B2", "#D55E00")) +
   scale_y_continuous(labels = scales::percent) +
   labs(x = NULL, y = NULL, title = "Causes of loss of forest in Brazil", fill = NULL,
        caption = "Fig. 2") +
   scale_x_continuous(breaks = seq(from = 2000, to = 2013, by = 4)) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  guides(fill = guide_legend(override.aes = list(size = 0.3)))
 ```
 
-<img src="README_files/figure-gfm/drivers_of_brazil_deforstation-1.png" title="Pasture is the most common cause of deforestation in Brazil, " alt="Pasture is the most common cause of deforestation in Brazil, " width="70%" />
+<img src="README_files/figure-gfm/drivers_of_brazil_deforstation-1.png" title="Pasture is the most common cause of deforestation in Brazil, commercial crops are also important" alt="Pasture is the most common cause of deforestation in Brazil, commercial crops are also important"  />
 
 #### Figure 3
 
@@ -188,6 +177,7 @@ soy_use_by_country %>%
   ggplot(aes(x = year, y = total, color = entity)) +
   geom_line(show.legend = F, size = 2) +
   gghighlight(max(total), max_highlight = 4,
+              label_params = list(hjust = -0.3),
               unhighlighted_params = list(size = 1.2, colour =
                                             alpha("gray", 0.6))) +
   scale_y_continuous(labels = label_number_si()) +
@@ -195,10 +185,11 @@ soy_use_by_country %>%
        caption = "Fig. 3") +
   # flagcolorcodes.com
   scale_color_manual(values = c("#6CACE4", "#009739", "#EE1C25", "#0A3161")) +
-  scale_x_continuous(breaks = seq(from = 1960, to = 2013, by = 10))
+  scale_x_continuous(breaks = seq(from = 1960, to = 2013, by = 10), 
+                     limits = c(1960, 2025))
 ```
 
-<img src="README_files/figure-gfm/soybean_use_countries-1.png" title="China, US, Brazil, Argentina identified as countries that use the most soybean." alt="China, US, Brazil, Argentina identified as countries that use the most soybean." width="70%" />
+<img src="README_files/figure-gfm/soybean_use_countries-1.png" title="China, US, Brazil, Argentina identified as countries that use the most soybean." alt="China, US, Brazil, Argentina identified as countries that use the most soybean."  />
 
 ### Discussion
 
@@ -299,7 +290,7 @@ data2 %>%
         axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 7, face = "bold"))
 ```
 
-<img src="README_files/figure-gfm/soybean_use_share-1.png" title="global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013" alt="global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013" width="70%" />
+<img src="README_files/figure-gfm/soybean_use_share-1.png" title="global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013" alt="global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013"  />
 
 #### Figure 2
 
@@ -324,7 +315,7 @@ ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) +
         axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 13, face = "bold"))
 ```
 
-<img src="README_files/figure-gfm/forest_net_converstion-1.png" title="The net loss in global forest area to use land for another purpose between 1990 and 2015" alt="The net loss in global forest area to use land for another purpose between 1990 and 2015" width="70%" />
+<img src="README_files/figure-gfm/forest_net_converstion-1.png" title="The net loss in global forest area to use land for another purpose between 1990 and 2015" alt="The net loss in global forest area to use land for another purpose between 1990 and 2015"  />
 
 ### Discussion
 
