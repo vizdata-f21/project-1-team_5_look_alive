@@ -80,34 +80,42 @@ knitr::opts_chunk$set(
   out.width = "70%"
   )
 
-forest <- read.csv("data/forest.csv")
-forest_area <- read.csv("data/forest_area.csv")
-brazil_loss <- read.csv("data/brazil_loss.csv")
-vegetable_oil <- read.csv("data/vegetable_oil.csv")
-soybean_use <- read.csv("data/soybean_use.csv")
+# these relabel col 1 but we don't care bc it's meaningless
+forest <- read_csv("data/forest.csv")
+forest_area <- read_csv("data/forest_area.csv")
+brazil_loss <- read_csv("data/brazil_loss.csv")
+vegetable_oil <- read_csv("data/vegetable_oil.csv")
+soybean_use <- read_csv("data/soybean_use.csv")
 
-brazil_loss$total_brazil_forest_loss_hectares = rowSums(brazil_loss[,5:15])
+brazil_loss <- brazil_loss %>%
+  rowwise() %>%
+  mutate(total_brazil_forest_loss_hectares = sum(c_across(commercial_crops:small_scale_clearing))) %>%
+  ungroup()
 
-annotation <- data.frame(
+
+
+annotation <- tibble(
    x = c(2010),
    y = c(-7300000),
    label = c("Brazil has lost")
 )
-annotation2 <- data.frame(
+annotation2 <- tibble(
    x = c(2010),
    y = c(-10500000),
    label = c("over 30 million")
 )
-annotation3 <- data.frame(
+annotation3 <- tibble(
    x = c(2010),
    y = c(-15700000),
    label = c("hectares of forest\nsince 2000")
 )
 
-brazil_loss %>% select(year, total_brazil_forest_loss_hectares) %>%
+brazil_loss <- brazil_loss %>%
+  select(year, total_brazil_forest_loss_hectares) %>%
   add_row(year = 2000, total_brazil_forest_loss_hectares = 0, .before = 1) %>%
-  mutate(cum_sum = -(cumsum(total_brazil_forest_loss_hectares))) %>%
-  ggplot() +
+  mutate(cum_sum = -(cumsum(total_brazil_forest_loss_hectares)))
+
+ggplot(brazil_loss) +
   geom_line(aes(year, cum_sum), size = 2, color = "#009739") +
   geom_bar(aes(year, -total_brazil_forest_loss_hectares), stat="identity") +
   geom_hline(aes(yintercept = 0), color = "red", size = 1.5) +
