@@ -28,13 +28,23 @@ ggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))
 
 Our data comes originally from the UN Food and Agriculture Organization’s Forest Resources Assessment. "Since year-to-year changes in forest cover can be volatile, the UN FAO provide this annual data averaged over five-year periods." It measures the area of forests over time in countries around the world. It also holds more detailed information about the loss of Brazilian forest over time. The data further holds data about soybean production and vegetable oil production by year and country.
 
-The dataset has 5 elements: `forest`, `forest_area`, `brazil_loss`, `soybean_use`, and `vegetable_oil`. The set `forest` contains the change every 5 years in for forest area in conversion. `forest_area` contains the change in global forest area as a percent of global forest area. `brazil_loss` contains the loss of Brazilian forest due to specific types of deforestation, such as `fire` and `small_scale_clearing`. `soybean_use` contains the soybean production and use by year and by country. Finally, the set `vegetable_oil` contains vegetable oil production by crop type and year.
+Thre are 5 datasets we are working with: `forest`, `forest_area`, `brazil_loss`, `soybean_use`, and `vegetable_oil`. The set `forest` contains the change every 5 years in for forest area in conversion. `forest_area` contains the change in global forest area as a percent of global forest area. `brazil_loss` contains the loss of Brazilian forest due to specific types of deforestation, such as `fire` and `small_scale_clearing`. `soybean_use` contains the soybean production and use by year and by country. Finally, the set `vegetable_oil` contains vegetable oil production by crop type and year.
+
+What we want to explore in the following visualizations is which countries are seeing the most deforestation within their borders, and to understand the causes of this deforestation. After initially looking at a line plot and seeing that Brazil has faced notably high levels of deforestation, we will look at the following. 
+
+* Brazil's cumulative forest loss 2000-20113
+* Causes of forest loss in Brazil
+* Top global consumers of soybeans
+* Global soybean use proportions over time 
+* Total global net forest conversion 
+
 
 ## What countries are seeing the most deforestation within their borders, and what is causing this deforestation?
 
 ### Introduction
 
 These ideas stuck us as the most essential elements of deforestation, and gaining an understanding of the complexities of deforestation depends on becoming familiar with these concepts.
+
 
 ### Approach
 
@@ -133,7 +143,7 @@ brazil_loss_no_total <- brazil_loss_no_total %>%
 
 ggplot(brazil_loss_no_total, aes(year, percentage, fill = cause)) +
   geom_area(alpha = 0.9) +
-  scale_fill_manual(values = c("#E69F00", "#56B4E9", "#CC79A7", "black", "#0072B2", "#D55E00")) +
+  scale_fill_manual(values = c("#6CACE4", "lightgoldenrod", "#EE1C25", "#0A3161", "#009739", "gray")) +
   scale_y_continuous(labels = scales::percent) +
   labs(
     x = NULL, y = NULL, title = "Causes of loss of forest in Brazil", fill = NULL,
@@ -239,8 +249,7 @@ use_prop %>%
     name = "Proportion",
     labels = c("0%", "25%", "50%", "75%", "100%")
   ) +
-  scale_fill_manual(
-    values = c("orangered4", "dodgerblue4"), 
+  scale_fill_manual(values = c("#6CACE4", "#009739"),
     name = NULL, labels = c("Animal food", "Human food")
   ) +
   labs(
