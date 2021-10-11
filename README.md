@@ -1,6 +1,6 @@
 Is soybean use driving global deforestation?
 ================
-by Team 5 Look Alive
+Team 5 Look Alive
 
 ``` r
 library(tidyverse)
@@ -12,6 +12,7 @@ library(ggdark)
 library(scales)
 library(viridis)
 library(gghighlight)
+library(styler)
 knitr::opts_chunk$set(echo = T)
 ```
 
@@ -81,22 +82,20 @@ brazil_loss <- brazil_loss %>%
   mutate(total_brazil_forest_loss_hectares = sum(c_across(commercial_crops:small_scale_clearing))) %>%
   ungroup()
 
-
-
 annotation <- tibble(
-   x = c(2010),
-   y = c(-7300000),
-   label = c("Brazil has lost")
+  x = c(2010),
+  y = c(-7300000),
+  label = c("Brazil has lost")
 )
 annotation2 <- tibble(
-   x = c(2010),
-   y = c(-10500000),
-   label = c("over 30 million")
+  x = c(2010),
+  y = c(-10500000),
+  label = c("over 30 million")
 )
 annotation3 <- tibble(
-   x = c(2010),
-   y = c(-15700000),
-   label = c("hectares of forest\nsince 2000")
+  x = c(2010),
+  y = c(-15700000),
+  label = c("hectares of forest\nsince 2000")
 )
 
 brazil_loss <- brazil_loss %>%
@@ -106,20 +105,26 @@ brazil_loss <- brazil_loss %>%
 
 ggplot(brazil_loss) +
   geom_line(aes(year, cum_sum), size = 2, color = "#009739") +
-  geom_bar(aes(year, -total_brazil_forest_loss_hectares), stat="identity") +
+  geom_bar(aes(year, -total_brazil_forest_loss_hectares), stat = "identity") +
   geom_hline(aes(yintercept = 0), color = "black", size = 1.5) +
   labs(title = "Cumulative Brazilian forest loss", subtitle = "2000 to 2013", x = NULL, y = "Hectares", caption = "Fig. 1") +
   scale_y_continuous(labels = label_number_si()) +
   scale_x_continuous() +
-  geom_text(data=annotation, aes(x=x, y=y, label=label),
-           color="black", 
-           size=6, angle=0) +
-  geom_text(data=annotation2, aes(x=x, y=y, label=label),
-           color="red", 
-           size=7, angle=0, fontface="bold") +
-  geom_text(data=annotation3, aes(x=x, y=y, label=label),
-           color="black", 
-           size=6, angle=0) +
+  geom_text(
+    data = annotation, aes(x = x, y = y, label = label),
+    color = "black",
+    size = 6, angle = 0
+  ) +
+  geom_text(
+    data = annotation2, aes(x = x, y = y, label = label),
+    color = "red",
+    size = 7, angle = 0, fontface = "bold"
+  ) +
+  geom_text(
+    data = annotation3, aes(x = x, y = y, label = label),
+    color = "black",
+    size = 6, angle = 0
+  ) +
   scale_x_continuous(breaks = seq(from = 2000, to = 2013, by = 4)) +
   theme(panel.grid.minor.x = element_blank())
 ```
@@ -132,8 +137,9 @@ ggplot(brazil_loss) +
 brazil_loss_no_total <- read.csv("data/brazil_loss.csv") %>% select(-(1:3))
 brazil_loss_no_total <- brazil_loss_no_total %>%
   pivot_longer(!year,
-               names_to = "cause",
-               values_to = "forest_lost") %>%
+    names_to = "cause",
+    values_to = "forest_lost"
+  ) %>%
   mutate(cause = case_when(
     cause == "pasture" ~ "Pasture",
     cause == "fire" ~ "Fire",
@@ -141,20 +147,22 @@ brazil_loss_no_total <- brazil_loss_no_total %>%
     cause == "selective_logging" ~ "Logging",
     cause == "small_scale_clearing" ~ "Small-Scale Farming",
     T ~ "Other"
-  ) %>% 
-  factor(levels=c('Fire', "Logging", "Small-Scale Farming", "Commercial Crops", 'Pasture',"Other"))) %>%
+  ) %>%
+    factor(levels = c("Fire", "Logging", "Small-Scale Farming", "Commercial Crops", "Pasture", "Other"))) %>%
   group_by(cause, year) %>%
-  summarise(sum = sum(forest_lost), .groups = 'drop') %>%
+  summarise(sum = sum(forest_lost), .groups = "drop") %>%
   group_by(year, cause) %>%
   summarise(n = sum(sum)) %>%
   mutate(percentage = n / sum(n))
 
-ggplot(brazil_loss_no_total, aes(year, percentage, fill=cause)) + 
-    geom_area(alpha = 0.9) +
+ggplot(brazil_loss_no_total, aes(year, percentage, fill = cause)) +
+  geom_area(alpha = 0.9) +
   scale_fill_manual(values = c("#E69F00", "#56B4E9", "#CC79A7", "black", "#0072B2", "#D55E00")) +
   scale_y_continuous(labels = scales::percent) +
-  labs(x = NULL, y = NULL, title = "Causes of loss of forest in Brazil", fill = NULL,
-       caption = "Fig. 2") +
+  labs(
+    x = NULL, y = NULL, title = "Causes of loss of forest in Brazil", fill = NULL,
+    caption = "Fig. 2"
+  ) +
   scale_x_continuous(breaks = seq(from = 2000, to = 2013, by = 4)) +
   theme(legend.position = "bottom") +
   guides(fill = guide_legend(override.aes = list(size = 0.3)))
@@ -166,8 +174,10 @@ ggplot(brazil_loss_no_total, aes(year, percentage, fill=cause)) +
 
 ``` r
 soy_use_by_country <- soybean_use %>%
-  filter(!is.na(code),
-         entity != "World") %>%
+  filter(
+    !is.na(code),
+    entity != "World"
+  ) %>%
   rowwise() %>%
   mutate(total = sum(human_food, animal_feed, processed, na.rm = T))
 
@@ -177,17 +187,25 @@ soy_use_by_country <- soybean_use %>%
 soy_use_by_country %>%
   ggplot(aes(x = year, y = total, color = entity)) +
   geom_line(show.legend = F, size = 2) +
-  gghighlight(max(total), max_highlight = 4,
-              label_params = list(hjust = -0.3),
-              unhighlighted_params = list(size = 1.2, colour =
-                                            alpha("gray", 0.6))) +
+  gghighlight(max(total),
+    max_highlight = 4,
+    label_params = list(hjust = -0.3),
+    unhighlighted_params = list(
+      size = 1.2, colour =
+        alpha("gray", 0.6)
+    )
+  ) +
   scale_y_continuous(labels = label_number_si()) +
-  labs(y = "Tonnes", x = NULL, title = "Soybean use by country",
-       caption = "Fig. 3") +
+  labs(
+    y = "Tonnes", x = NULL, title = "Soybean use by country",
+    caption = "Fig. 3"
+  ) +
   # flagcolorcodes.com
   scale_color_manual(values = c("#6CACE4", "#009739", "#EE1C25", "#0A3161")) +
-  scale_x_continuous(breaks = seq(from = 1960, to = 2013, by = 10), 
-                     limits = c(1960, 2025))
+  scale_x_continuous(
+    breaks = seq(from = 1960, to = 2013, by = 10),
+    limits = c(1960, 2025)
+  )
 ```
 
 <img src="README_files/figure-gfm/soybean_use_countries-1.png" title="China, US, Brazil, Argentina identified as countries that use the most soybean." alt="China, US, Brazil, Argentina identified as countries that use the most soybean."  />
@@ -266,44 +284,54 @@ continued forest conversions.
 #### Figure 1
 
 ``` r
-data2 <-soybean_use %>%
+use_prop <- soybean_use %>%
   group_by(year) %>%
-  summarise(total_human = sum(human_food, na.rm = T),
-            total_animal = sum(animal_feed, na.rm = T)) %>%
-  pivot_longer(!year, 
-              names_to = "use",
-              values_to = "amount") 
+  summarise(
+    total_human = sum(human_food, na.rm = T),
+    total_animal = sum(animal_feed, na.rm = T)
+  ) %>%
+  pivot_longer(!year,
+    names_to = "use",
+    values_to = "amount"
+  )
 
-data2 <- data2 %>%
-   group_by(year) %>%
-   mutate(prop = amount / sum(amount))
- 
-data2 %>%
+use_prop <- use_prop %>%
+  group_by(year) %>%
+  mutate(prop = amount / sum(amount))
+
+use_prop %>%
   filter(year >= 1977) %>%
-  ggplot(aes(fill = use, y = prop, x = year)) + 
-  geom_bar(position ="fill", stat ="identity") +
-  
-  scale_x_continuous (name = "Year",
-                      limits = c(1990, 2013),
-                     breaks = seq(from = 1990, to = 2013, by = 10)) +
-  scale_y_continuous(name = "Proportion",
-                     labels = c("0%", "25%", "50%","75%","100%")) +
-  scale_fill_manual(values = c("orangered4", "goldenrod1"), 
-                    name = NULL, labels = c("Animal food", "Human food")) +
-  
-  labs(title = "Global soybean production and use share between 1961-2013",
-       subtitle = "By types of usage") +
-  
-  theme(plot.title = element_text(face = 'bold',size = 13),
-        plot.subtitle = element_text( size = 12),
-        legend.position = "bottom",
-        legend.key.size = unit(.5, "cm"),
-        legend.text = element_text(size = 10),
-        legend.box.spacing = unit(0.2, "cm"),
-        axis.title.x = element_text(size = 10),
-        axis.title.y = element_text(size = 10),
-        axis.text.x = element_text( size = 7,face = "bold"),
-        axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 7, face = "bold"))
+  ggplot(aes(fill = use, y = prop, x = year)) +
+  geom_bar(position = "fill", stat = "identity") +
+  scale_x_continuous(
+    name = "Year",
+    limits = c(1990, 2013),
+    breaks = seq(from = 1990, to = 2013, by = 10)
+  ) +
+  scale_y_continuous(
+    name = "Proportion",
+    labels = c("0%", "25%", "50%", "75%", "100%")
+  ) +
+  scale_fill_manual(
+    values = c("orangered4", "goldenrod1"),
+    name = NULL, labels = c("Animal food", "Human food")
+  ) +
+  labs(
+    title = "Global soybean production and use share between 1961-2013",
+    subtitle = "By types of usage"
+  ) +
+  theme(
+    plot.title = element_text(face = "bold", size = 13),
+    plot.subtitle = element_text(size = 12),
+    legend.position = "bottom",
+    legend.key.size = unit(.5, "cm"),
+    legend.text = element_text(size = 10),
+    legend.box.spacing = unit(0.2, "cm"),
+    axis.title.x = element_text(size = 10),
+    axis.title.y = element_text(size = 10),
+    axis.text.x = element_text(size = 7, face = "bold"),
+    axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 7, face = "bold")
+  )
 ```
 
 <img src="README_files/figure-gfm/soybean_use_share-1.png" title="global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013" alt="global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013"  />
@@ -314,21 +342,22 @@ data2 %>%
 forest2 <- forest %>%
   filter(entity == "World")
 
-ggplot(forest2,aes(x=year, y = net_forest_conversion, fill=year)) + 
-  geom_area(aes(color = entity), size = 2.5, fill= "lightgray", alpha = 0.5) +
+ggplot(forest2, aes(x = year, y = net_forest_conversion, fill = year)) +
+  geom_area(aes(color = entity), size = 2.5, fill = "lightgray", alpha = 0.5) +
   scale_color_manual(values = c("burlywood4")) +
   scale_y_continuous(labels = label_number_si()) +
-  scale_x_continuous(limits = c(1990, 2013),
-                     breaks = seq(from = 1990, to = 2013, by = 10)) +
-
-  
+  scale_x_continuous(
+    limits = c(1990, 2013),
+    breaks = seq(from = 1990, to = 2013, by = 10)
+  ) +
   labs(title = "Global Net Forest Conversion (hectares)", x = "Year", y = NULL) +
-  
-  theme(legend.position = "none",
-        plot.title = element_text(face = 'bold',size = 17),
-        axis.title.x = element_text(size = 16),
-        axis.text.x = element_text( size = 13,face = "bold"),
-        axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 13, face = "bold"))
+  theme(
+    legend.position = "none",
+    plot.title = element_text(face = "bold", size = 17),
+    axis.title.x = element_text(size = 16),
+    axis.text.x = element_text(size = 13, face = "bold"),
+    axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 13, face = "bold")
+  )
 ```
 
 <img src="README_files/figure-gfm/forest_net_converstion-1.png" title="The net loss in global forest area to use land for another purpose between 1990 and 2015" alt="The net loss in global forest area to use land for another purpose between 1990 and 2015"  />
