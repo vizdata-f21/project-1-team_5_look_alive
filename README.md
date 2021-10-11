@@ -13,7 +13,10 @@ library(scales)
 library(viridis)
 library(gghighlight)
 library(styler)
+library(wesanderson)
 knitr::opts_chunk$set(echo = T)
+
+ggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))
 ```
 
 ## Introduction
@@ -129,7 +132,7 @@ ggplot(brazil_loss) +
   theme(panel.grid.minor.x = element_blank())
 ```
 
-<img src="README_files/figure-gfm/cumulative_brazil_only-1.png" title="Brazil lost 30m hectares of forest from 2000 to 2013." alt="Brazil lost 30m hectares of forest from 2000 to 2013."  />
+<img src="README_files/figure-gfm/cumulative_brazil_only-1.png" title="Brazil lost 30m hectares of forest from 2000 to 2013." alt="Brazil lost 30m hectares of forest from 2000 to 2013." style="display: block; margin: auto;" />
 
 #### Figure 2
 
@@ -168,7 +171,7 @@ ggplot(brazil_loss_no_total, aes(year, percentage, fill = cause)) +
   guides(fill = guide_legend(override.aes = list(size = 0.3)))
 ```
 
-<img src="README_files/figure-gfm/drivers_of_brazil_deforstation-1.png" title="Pasture is the most common cause of deforestation in Brazil, commercial crops are also important" alt="Pasture is the most common cause of deforestation in Brazil, commercial crops are also important"  />
+<img src="README_files/figure-gfm/drivers_of_brazil_deforstation-1.png" title="Pasture is the most common cause of deforestation in Brazil, commercial crops are also important" alt="Pasture is the most common cause of deforestation in Brazil, commercial crops are also important" style="display: block; margin: auto;" />
 
 #### Figure 3
 
@@ -208,7 +211,7 @@ soy_use_by_country %>%
   )
 ```
 
-<img src="README_files/figure-gfm/soybean_use_countries-1.png" title="China, US, Brazil, Argentina identified as countries that use the most soybean." alt="China, US, Brazil, Argentina identified as countries that use the most soybean."  />
+<img src="README_files/figure-gfm/soybean_use_countries-1.png" title="China, US, Brazil, Argentina identified as countries that use the most soybean." alt="China, US, Brazil, Argentina identified as countries that use the most soybean." style="display: block; margin: auto;" />
 
 ### Discussion
 
@@ -313,7 +316,7 @@ use_prop %>%
     labels = c("0%", "25%", "50%", "75%", "100%")
   ) +
   scale_fill_manual(
-    values = c("orangered4", "goldenrod1"),
+    values = c("orangered4", "dodgerblue4"), 
     name = NULL, labels = c("Animal food", "Human food")
   ) +
   labs(
@@ -321,20 +324,20 @@ use_prop %>%
     subtitle = "By types of usage"
   ) +
   theme(
-    plot.title = element_text(face = "bold", size = 13),
-    plot.subtitle = element_text(size = 12),
+    plot.title = element_text(face = "bold", size = 17),
+    plot.subtitle = element_text(size = 14),
     legend.position = "bottom",
     legend.key.size = unit(.5, "cm"),
-    legend.text = element_text(size = 10),
+    legend.text = element_text(size = 12),
     legend.box.spacing = unit(0.2, "cm"),
-    axis.title.x = element_text(size = 10),
-    axis.title.y = element_text(size = 10),
-    axis.text.x = element_text(size = 7, face = "bold"),
-    axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 7, face = "bold")
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text.x = element_text(size = 9, face = "bold"),
+    axis.text.y = element_text(margin = margin(t = .3, unit = "cm"), size = 9, face = "bold")
   )
 ```
 
-<img src="README_files/figure-gfm/soybean_use_share-1.png" title="global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013" alt="global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013"  />
+<img src="README_files/figure-gfm/soybean_use_share-1.png" title="global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013" alt="global soybean production share by animal feed is catching up to, if not exceeding, the share by human food between 1961 and 2013" style="display: block; margin: auto;" />
 
 #### Figure 2
 
@@ -344,7 +347,7 @@ forest2 <- forest %>%
 
 ggplot(forest2, aes(x = year, y = net_forest_conversion, fill = year)) +
   geom_area(aes(color = entity), size = 2.5, fill = "lightgray", alpha = 0.5) +
-  scale_color_manual(values = c("burlywood4")) +
+  scale_color_manual(values = c("#009739")) +
   scale_y_continuous(labels = label_number_si()) +
   scale_x_continuous(
     limits = c(1990, 2013),
@@ -360,7 +363,7 @@ ggplot(forest2, aes(x = year, y = net_forest_conversion, fill = year)) +
   )
 ```
 
-<img src="README_files/figure-gfm/forest_net_converstion-1.png" title="The net loss in global forest area to use land for another purpose between 1990 and 2015" alt="The net loss in global forest area to use land for another purpose between 1990 and 2015"  />
+<img src="README_files/figure-gfm/forest_net_converstion-1.png" title="The net loss in global forest area to use land for another purpose between 1990 and 2015" alt="The net loss in global forest area to use land for another purpose between 1990 and 2015" style="display: block; margin: auto;" />
 
 ### Discussion
 
