@@ -13,7 +13,7 @@ library(scales)
 library(viridis)
 library(gghighlight)
 library(styler)
-library(wesanderson)
+
 knitr::opts_chunk$set(echo = T)
 
 ggplot2::theme_set(ggplot2::theme_minimal(base_size = 20))
@@ -60,10 +60,9 @@ years. From here, we could then examine the “what”. To do this, we
 decided to compare the proportions with an area plot. This gave us the
 opportunity to showcase which causes are the most impactful in Brazil’s
 deforestation. Finally, to understand the “why” of deforestation, we
-selected to examine one of the leading causes of deforestation in Brazil
-- soybean production. Using line plots again allowed us to highlight
-which regions and countries are most influential in driving soybean
-production globally.
+selected to examine one of the leading causes of deforestation in
+Brazil. Using line plots again allowed us to highlight which regions and
+countries are most influential in driving soybean production globally.
 
 Putting all of these factors together gives us a basic understanding of
 global deforestation.
@@ -321,11 +320,12 @@ use_prop %>%
   ) +
   labs(
     title = "Global soybean production and use share between 1961-2013",
-    subtitle = "By types of usage"
+    subtitle = "By types of usage",
+    caption = "Fig. 4"
   ) +
   theme(
     plot.title = element_text(face = "bold", size = 17),
-    plot.subtitle = element_text(size = 14),
+    plot.subtitle = element_text(size = 15),
     legend.position = "bottom",
     legend.key.size = unit(.5, "cm"),
     legend.text = element_text(size = 12),
@@ -353,7 +353,8 @@ ggplot(forest2, aes(x = year, y = net_forest_conversion, fill = year)) +
     limits = c(1990, 2013),
     breaks = seq(from = 1990, to = 2013, by = 10)
   ) +
-  labs(title = "Global Net Forest Conversion (hectares)", x = "Year", y = NULL) +
+  labs(title = "Global Net Forest Conversion (hectares)", x = "Year", y = NULL, caption = "Fig. 5"
+  ) +
   theme(
     legend.position = "none",
     plot.title = element_text(face = "bold", size = 17),
