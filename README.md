@@ -56,9 +56,10 @@ years. From here, we could then examine the “what”. To do this, we
 decided to compare the proportions with an area plot. This gave us the
 opportunity to showcase which causes are the most impactful in Brazil’s
 deforestation. Finally, to understand the “why” of deforestation, we
-selected to examine one of the leading causes of deforestation in
-Brazil. Using line plots again allowed us to highlight which regions and
-countries are most influential in driving soybean production globally.
+selected to examine one of the leading causes of deforestation in Brazil
+- soybean production. Using line plots again allowed us to highlight
+which regions and countries are most influential in driving soybean
+production globally.
 
 Putting all of these factors together gives us a basic understanding of
 global deforestation.
@@ -231,7 +232,7 @@ Argentina, which incentivizes the use of soybean after its growth
 ### Introduction
 
 In the second question, we wanted to start understanding the patterns of
-soybean use over time. After gaining and understanding of how total
+soybean use over time. After gaining an understanding of how total
 soybean use and production have drastically increased around the world
 in the last 50 years, we looked in question 2 at the specific ways
 soybean is used within an overall increasing trend and how that relates
@@ -239,11 +240,26 @@ to deforestation globally.
 
 ### Approach
 
-We started by looking at the proportion of soybeans used for animal feed
-as compared to human food, over time. We followed this by looking at
-trends in global forest conservation, and compared these two plots to
-see if our understanding of deforestation causes matched with the trend
-in changing patterns of soybean use.
+In particular, we planned on exploring the proportional changes over
+time in the share of soybean production used for human consumption
+compared to its share for feeding animals, and hereby better understand
+if this change in proportion relates to the aggravation of global
+deforestation.
+
+First, we chose to use a stacked bar chart to examine changes in
+production share over time between soybean usage for human food and for
+animal feed. This would allow us to get a general grasp on whether the
+overall global increase in soybean production is driven by an added
+demand in producing human food (i.e. tofu, tempeh, or other dairy
+substitutions) or a demand increase in feeding livestock (i.e. hogs,
+poultry, beef). From here, we wanted to see if this proportional change
+in the share of soybean production has any effect on the rate of global
+deforestation over time, by using a line plot to represent the rate of
+change in global net forest conversion.
+
+Putting these two plots together gives us an idea on which sector within
+the increase in global soybean production might be related with
+continued forest conversions.
 
 ### Analysis
 
